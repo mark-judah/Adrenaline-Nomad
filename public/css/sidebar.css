@@ -1,0 +1,32 @@
+body, html {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .content {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .side_bar {
+    list-style-type: none;
+    padding: 0;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    background: white;
+    margin: 0;
+  }
+  
+  #show-sidebar {
+    background: black;
+    color: white;
+    padding: 5px;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+  }
+  .main {
+    border: 1px solid black;
+    flex: 1;
+  }

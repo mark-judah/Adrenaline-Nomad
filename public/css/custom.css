@@ -1,0 +1,22 @@
+#loadOverlay{display: none;}
+.fixedbutton {
+    position: fixed;
+    right:0;
+    bottom:0;
+}
+.navbar.transparent.navbar-inverse .navbar-inner {
+    background: rgba(0,0,0,0.4);
+ }
+ hr.divider {
+    max-width: 3.25rem;
+    border-width: 0.2rem;
+    border-color: #f4623a;
+  }
+  .my-4 {
+    margin-top: 1.5rem !important;
+  }
+  .centereddiv {
+    width: 50%;
+    margin: 0 auto;
+  }
+  
