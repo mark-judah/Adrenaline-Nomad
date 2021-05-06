@@ -19,12 +19,24 @@
                     name="title" class="form-control" />
                 <br>
                 <div class="form-group">
-                    <label for="photo_name">Choose Post Thumbnail</label>
+                    <label for="blog_thumbnail">Choose Post Thumbnail</label>
                     {{-- <input required type="file" class="form-control" name="images[]" id="gallery-photo-add" multiple> --}}
 
-                    <input type="file" name="photo_name" id="photo_name" onchange="loadPreview(this);" class="form-control">
+                    <input type="file" name="blog_thumbnail" id="blog_thumbnail" onchange="loadPreview(this);" class="form-control">
                     <div class="gallery">
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="images">Upload Images for blog</label>
+                    <input type="file" name="images[]" multiple class="form-control" accept="image/*">
+                    @if ($errors->has('files'))
+                      @foreach ($errors->get('files') as $error)
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $error }}</strong>
+                      </span>
+                      @endforeach
+                    @endif
                 </div>
                 <textarea class="description" name="body">{{ old('body') }}</textarea>
                 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>

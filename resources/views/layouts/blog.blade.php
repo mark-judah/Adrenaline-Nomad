@@ -23,8 +23,8 @@
     @stop
     @section('content')
     <div class="container">
-        <h1 style="text-align: center;">Blog Posts</h1>
-        <hr class="divider my-4" />
+        <h5 style="text-align: center;">Blog Posts</h5>
+        <hr class="divider my-2" />
         <!--Show List Of posts-->
         @isset($posts)
             @if (!$posts->count())

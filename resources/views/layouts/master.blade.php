@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>Adventure Blog</title>
+    <title>The Adrenaline Nomad</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    <!-- Site CSS -->
     <link href="{{ asset('css/style.css') }}" defer rel="stylesheet" type="text/css">
@@ -26,7 +26,6 @@
     @section('navbar')
     <!-- Start Main Top -->
     <header class="main-header">
-        <!-- Navbar -->
         
 
   <!-- Navbar -->
@@ -44,31 +43,29 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav mx-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item active"><a class="nav-link" href="/">THE ADRENALINE SEEKER</a></li>
-                        <li class="nav-item"><a class="nav-link" href="blog">BLOGS</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">ABOUT</a></li>
-                        @if (!Auth::guest() && Auth::user()->is_admin())
-                        <li class="nav-item"><a class="nav-link" href="new-post">NEW BLOG</a></li>
-                        @endif
-                        <li class="nav-item"><a class="nav-link" href="#">CONTACT US</a></li>
-                       
+                    <ul class="nav navbar-nav mr-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item"><a class="nav-link" href="blog"><img src="{{ asset('images/logo.png') }}" style="width: 40px" height="30px"></a></li>
+                        <li class="nav-item active"><a class="nav-link" href="/">The Adrenaline Nomad</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog">Blogs</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">About</a></li>                       
+                        <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
                         @unless (Auth::check())
-                        <li class="nav-item"><a class="nav-link" href="/login">LOGIN</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                         @endunless
 
                         @auth
                         <li class="dropdown">
                             <a href="" class="nav-link" data-toggle="dropdown">{{Auth::user()->name}}</a>
                             <ul class="dropdown-menu">
-                                @if (Auth::user()->name=='Admin')
+                                @if (!Auth::guest() && Auth::user()->is_admin())
                                 <li><a href="{{url('admin')}}">Admin Panel</a></li>
                                 @endif
                                 <li><a href="{{url('logout')}}">Logout</a></li>                               
                             </ul>
                         </li>    
                         @endauth
-                        
+                        <li class="nav-item"><a class="nav-link" href="#">Travel | Adventure | Adrenaline | Story Telling</a></li>
+
                           
 
                     </ul>

@@ -25,7 +25,9 @@ class CreatePostsTable extends Migration
         $table->string('slug')->unique();
         $table->boolean('active');
         $table->timestamps();
-        $table->string('photo_name');
+        $table->string('name')->nullable();
+        $table->string('path')->nullable();
+        $table->string('blog_thumbnail')->nullable();
 
       });
     }

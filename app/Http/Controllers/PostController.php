@@ -64,21 +64,35 @@ class PostController extends Controller
   public function store(PostFormRequest $request)
   {
     request()->validate([
-      'photo_name' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-   
+      'blog_thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+      'images' => 'required',
+
  ]);
- if ($files = $request->file('photo_name')) {
+ //for the blog thumbnail
+ if ($files = $request->file('blog_thumbnail')) {
    // Define upload path
      $destinationPath = public_path('/post_thumbnails/'); // upload path
 // Upload Orginal Image           
      $postThumbnail = date('YmdHis') . "." . $files->getClientOriginalExtension();
      $files->move($destinationPath, $postThumbnail);
      $insert['image'] = "$postThumbnail";
+ }
 
-     
+  //for the blog images
+  if ($request->hasfile('images')) {
+    $images = $request->file('images');
+
+    foreach($images as $image) {
+      $name = date('YmdHis') . "." . $image->getClientOriginalName();
+      $path = $image->storeAs('uploads', $name, 'public');
+ 
+    }
+  }
     $post = new Posts();
     $post->title = $request->get('title');
-    $post->photo_name="$postThumbnail";
+    $post->name="$name";
+    $post->path="/storage/.$path";
+    $post->blog_thumbnail="$postThumbnail";
     $post->body = $request->get('body');
     $post->slug = Str::slug($post->title);
 
@@ -98,7 +112,7 @@ class PostController extends Controller
     $post->save();
    // return redirect('/blog' . $post->slug)->withMessage($message);
    return redirect('/');
-  }
+  
   }
   /**
    * Display the specified resource.

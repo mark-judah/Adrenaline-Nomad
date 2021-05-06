@@ -17,7 +17,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1 class="m-b-20"><strong>Welcome To Adventure Blog</strong></h1>
+                                <h1 class="m-b-20"><strong>THE ADRENALINE NOMAD</strong></h1>
                                 <p class="m-b-40">My mission in life is not to merely survive but to thrive and to do so
                                     with some passion, some compassion, some humor, and some style ~Maya Angelou
                                 </p>
@@ -30,7 +30,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1 class="m-b-20"><strong>Welcome To Adventure Blog</strong></h1>
+                                <h1 class="m-b-20"><strong>THE ADRENALINE NOMAD</strong></h1>
                                 <p class="m-b-40">My mission in life is not to merely survive but to thrive and to do so
                                     with some passion, some compassion, some humor, and some style ~Maya Angelou
                                 </p>
@@ -43,7 +43,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1 class="m-b-20"><strong>Welcome To Adventure Blog</strong></h1>
+                                <h1 class="m-b-20"><strong>THE ADRENALINE NOMAD</strong></h1>
                                 <p class="m-b-40">My mission in life is not to merely survive but to thrive and to do so
                                     with some passion, some compassion, some humor, and some style ~Maya Angelou
                                 </p>
@@ -56,98 +56,53 @@
         </div>
 
         <br>
+        
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-7.5">
                     <div class="section_title text-center mb-55">
                         <h3><b>About Me</b> </h3>
                     </div>
-                    <!-- Gallery -->
-<div class="row">
-    <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-      <img
-        src="{{ asset('images/gtz.jpg') }}"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt=""
-      />
-  
-      <img
-        src="{{ asset('images/gtb.jpg') }}"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt=""
-      />
-    </div>
-  
-    <div class="col-lg-4 mb-4 mb-lg-0">
-        <img
-        src="{{ asset('images/gt.jpg') }}"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt=""
-      />
+                <img src="{{ asset('images/coverPhoto.png') }}" style="width: 650px" height="550px">
 
-      <img
-        src="{{ asset('images/gty.jpg') }}"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt=""
-      />
-  
-      
-    </div>
-  
-    <div class="col-lg-4 mb-4 mb-lg-0">
-      <img
-        src="{{ asset('images/gta.jpg') }}"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt=""
-      />
-  
-      <img
-        src="{{ asset('images/gtc.jpg') }}"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt=""
-      />
-    </div>
-  </div>
-  <!-- Gallery -->
-                    {{-- <img src="{{ asset('images/gt.jpg') }}" style="width: 600px"> --}}
                 </div>
-                <div class="col-md-3">
+
+                <div class="col-md-3.5">
                     <div class="section_title text-center mb-55">
                         <h3><b>Places to visit in Nairobi</b> </h3>
                     </div>
-                        <div class="d-flex flex-row">
-                            <div class="p-2"><img src="{{ asset('images/gtd.jpg') }}" style="width: 100px">
-                            </div>
-                            <div class="p-2">Family friendy adventures</div>
-                            
+                    <div class="d-flex flex-row">
+                        <div class="p-2"><img src="{{ asset('images/gtd.jpg') }}" style="width: 100px">
                         </div>
-                        {{-- <> --}}
-                        <div class="d-flex flex-row">
-                            <div class="p-2"><img src="{{ asset('images/gte.jpg') }}" style="width: 100px" height="80px">
-                            </div>
-                            <div class="p-2">Perfect spots for dates</div>
-                            
+                        <div class="p-2">Family friendy adventures</div>
+
+                    </div>
+                    <br>
+
+                    <div class="d-flex flex-row">
+                        <div class="p-2"><img src="{{ asset('images/gte.jpg') }}" style="width: 100px"
+                                height="80px">
                         </div>
-                        {{-- <> --}}
-                        <div class="d-flex flex-row">
-                            <div class="p-2"><img src="{{ asset('images/gtf.jpg') }}" style="width: 100px">
-                            </div>
-                            <div class="p-2">Cycling chronicles</div>
-                            
+                        <div class="p-2">Perfect spots for dates</div>
+
+                    </div>
+                    <br>
+                    <div class="d-flex flex-row">
+                        <div class="p-2"><img src="{{ asset('images/gtf.jpg') }}" style="width: 100px">
                         </div>
-                        {{-- <> --}}
-                        <div class="d-flex flex-row">
-                            <div class="p-2"><img src="{{ asset('images/karura.jpg') }}" style="width: 100px">
-                            </div>
-                            <div class="p-2">For Adrenaline junkies</div>
-                            
+                        <div class="p-2">Cycling chronicles</div>
+
+                    </div>
+                    <br>
+                    <div class="d-flex flex-row">
+                        <div class="p-2"><img src="{{ asset('images/karura.jpg') }}" style="width: 100px">
                         </div>
-                        {{-- <> --}}
+                        <div class="p-2">For Adrenaline junkies</div>
+
+                    </div>
+                    <br>
                 </div>
             </div>
-        </div>
-
-        </div>
         </div>
 
         <!-- End Slider -->
@@ -171,7 +126,7 @@
                                 @foreach ($chunk as $data)
                                     <div class="col-md-3">
                                         <div class="card" style="width: 14rem;">
-                                            <img src="{{ url('/post_thumbnails') }}/{{ $data->photo_name }}"
+                                            <img src="{{ url('/post_thumbnails') }}/{{ $data->blog_thumbnail }}"
                                                 class="card-img-top" alt="..." style="height: 150px">
                                             <div class="card-body">
                                                 <h5 class="card-title"><a

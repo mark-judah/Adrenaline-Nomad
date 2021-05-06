@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,7 @@ Route::get('/', 'PostController@fetch_blogs');
 Route::view('/login', 'auth.login');
 Route::view('/register', 'auth.register');
 Route::get('blog', 'PostController@index');
+Route::get('admin', [AdminController::class, 'index']);
 
 //logout
 Route::get('logout', function(){

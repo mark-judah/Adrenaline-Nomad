@@ -15,52 +15,17 @@
 @section('content')
     <br>
     @if ($data['posts'])
-
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title" style=" width: 100%;
+                <h5  style=" width: 100%;
                                         text-align: center;">{{ $data['posts']->title }}</h5>
+                                            <hr class="divider my-2" />
+
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <!-- Start Slider -->
-                            
-                            <div id="slides-shop" class="cover-slides">
-                                <ul class="slides-container">
-                                   
-                                    <li class="text-center">
-                                        <img src="{{ url('/post_thumbnails') }}/{{ $data['posts']->photo_name }}">
-                                       
-                                    </li>
-                                    <li class="text-center">
-                                        <img src="{{ asset('images/banner1c.jpg') }}">
-                                       
-                                    </li>
-                                    <li class="text-center">
-                                        <img src="{{ asset('images/banner1a.jpg') }}">
-                                       
-                                    </li>
-
-                                </ul>
-                            </div>
-
-
-
-                            <!-- End Slider -->
-
-                        </div>
-
-
-
-                        <div class="col-md-6">
-                            <p class="card-text">{!! $data['posts']->body !!}</p>
+                            <p  style="text-align: center;">{!! $data['posts']->body !!}</p>
                             <p class="card-text"><small
                                     class="text-muted">{{ $data['posts']->created_at->format('M d,Y \a\t h:i a') }} By
                                     <a
                                         href="{{ url('/user/' . $data['posts']->author_id) }}">{{ $data['posts']->author->name }}</a></small>
                             </p>
-                        </div>
-                    </div>
                 </div>
             </div>
 
