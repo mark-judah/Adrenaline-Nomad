@@ -10,12 +10,8 @@ class Posts extends Model
   //restricts columns from modifying
   protected $fillable = [
     'title',
-    'name',
     'body',
-    'path',
     'blog_thumbnail',
-
-    
   ];
   // posts has many comments
   // returns all comments on that post

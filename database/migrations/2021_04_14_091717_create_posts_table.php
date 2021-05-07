@@ -21,7 +21,6 @@ class CreatePostsTable extends Migration
           ->references('id')->on('users')
           ->onDelete('cascade');
         $table->string('title')->unique();
-        $table->text('body');
         $table->string('slug')->unique();
         $table->boolean('active');
         $table->timestamps();
@@ -30,6 +29,8 @@ class CreatePostsTable extends Migration
         $table->string('blog_thumbnail')->nullable();
 
       });
+      DB::statement("ALTER TABLE posts ADD body LONGBLOB");
+
     }
 
     /**

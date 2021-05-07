@@ -22,6 +22,7 @@ Route::get('/', function () {
 });
 Route::get('/', 'PostController@fetch_blogs');
 Route::view('/login', 'auth.login');
+Route::view('/contact', 'layouts.contact');
 Route::view('/register', 'auth.register');
 Route::get('blog', 'PostController@index');
 Route::get('admin', [AdminController::class, 'index']);

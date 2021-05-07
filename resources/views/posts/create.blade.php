@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="images">Upload Images for blog</label>
                     <input type="file" name="images[]" multiple class="form-control" accept="image/*">
                     @if ($errors->has('files'))
@@ -37,14 +37,17 @@
                       </span>
                       @endforeach
                     @endif
-                </div>
+                </div> --}}
                 <textarea class="description" name="body">{{ old('body') }}</textarea>
                 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
                 <script>
                     tinymce.init({
                         selector: 'textarea.description',
                         width: 900,
-                        height: 300
+                        height: 300,
+                        plugins: 'paste',
+                        paste_data_images: true
+
                     });
 
                 </script>

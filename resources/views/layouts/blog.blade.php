@@ -23,8 +23,10 @@
     @stop
     @section('content')
     <div class="container">
+        <br>
         <h5 style="text-align: center;">Blog Posts</h5>
         <hr class="divider my-2" />
+        <br>
         <!--Show List Of posts-->
         @isset($posts)
             @if (!$posts->count())
@@ -36,7 +38,7 @@
                             @foreach ($chunk as $data)
                             <div class="col-md-3">
                                 <div class="card" style="width: 15rem;">
-                                        <img src="{{ url('/post_thumbnails') }}/{{ $data->photo_name }}"
+                                        <img src="{{ url('/post_thumbnails') }}/{{ $data->blog_thumbnail }}"
                                             class="card-img-top" alt="..." style="height: 150px">
                                         <div class="card-body">
                                             <h5 class="card-title"><a
@@ -58,7 +60,10 @@
                                                     By <a
                                                         href="{{ url('/user/' . $data->author_id) }}">{{ $data->author->name }}</a></small>
                                                        <br>
-                                                        <small><a href="{{ url('edit/'.$data->slug)}}">Edit Post</a></small>                                                    </p>
+                                                       @if (!Auth::guest() && ($data->author_id == Auth::user()->id || Auth::user()->is_admin()))
+                                                        <small><a href="{{ url('edit/'.$data->slug)}}">Edit Post</a></small>       
+                                                        @endif
+                                                    </p>
                                         </div>
                                     </div>
                                 </div>

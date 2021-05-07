@@ -42,13 +42,13 @@
                 <!-- End Header Navigation -->
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav mr-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                <div class="collapse navbar-collapse justify-content-end" id="navbar-menu">
+                    <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item"><a class="nav-link" href="blog"><img src="{{ asset('images/logo.png') }}" style="width: 40px" height="30px"></a></li>
                         <li class="nav-item active"><a class="nav-link" href="/">The Adrenaline Nomad</a></li>
                         <li class="nav-item"><a class="nav-link" href="blog">Blogs</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">About</a></li>                       
-                        <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
                         @unless (Auth::check())
                         <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                         @endunless
@@ -64,7 +64,8 @@
                             </ul>
                         </li>    
                         @endauth
-                        <li class="nav-item"><a class="nav-link" href="#">Travel | Adventure | Adrenaline | Story Telling</a></li>
+                        
+                        <li class="nav-item ml-auto" style="float: right"><a class="nav-link">Travel | Adventure | Adrenaline | Story Telling</a></li>
 
                           
 

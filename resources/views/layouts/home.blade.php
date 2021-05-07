@@ -59,14 +59,15 @@
         
         <div class="container">
             <div class="row">
-                <div class="col-md-7.5">
+                <div class="col-md-12">
                     <div class="section_title text-center mb-55">
                         <h3><b>About Me</b> </h3>
                     </div>
-                <img src="{{ asset('images/coverPhoto.png') }}" style="width: 650px" height="550px">
+                    <a href="#"><img src="{{ asset('images/coverPhoto.png') }}">
+                    </a>
 
                 </div>
-
+{{-- 
                 <div class="col-md-3.5">
                     <div class="section_title text-center mb-55">
                         <h3><b>Places to visit in Nairobi</b> </h3>
@@ -101,7 +102,7 @@
 
                     </div>
                     <br>
-                </div>
+                </div> --}}
             </div>
         </div>
 

@@ -78,20 +78,19 @@ class PostController extends Controller
      $insert['image'] = "$postThumbnail";
  }
 
-  //for the blog images
-  if ($request->hasfile('images')) {
-    $images = $request->file('images');
+  // //for the blog images
+  // if ($request->hasfile('images')) {
+  //   $images = $request->file('images');
 
-    foreach($images as $image) {
-      $name = date('YmdHis') . "." . $image->getClientOriginalName();
-      $path = $image->storeAs('uploads', $name, 'public');
+  //   foreach($images as $image) {
+  //     $name = date('YmdHis') . "." . $image->getClientOriginalName();
+  //     $path = $image->storeAs('uploads', $name, 'public');
  
-    }
-  }
+  //   }
+  // }
     $post = new Posts();
     $post->title = $request->get('title');
     $post->name="$name";
-    $post->path="/storage/.$path";
     $post->blog_thumbnail="$postThumbnail";
     $post->body = $request->get('body');
     $post->slug = Str::slug($post->title);
