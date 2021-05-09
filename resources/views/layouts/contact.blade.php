@@ -11,22 +11,6 @@
 <div class="contact-box-main">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-sm-12">
-                <div class="contact-info-left">
-                    <h2>CONTACT INFO</h2>
-                    <ul>
-                        <li>
-                            <p><i class="fas fa-phone-square"></i>Instagram: <a href="#"></a></p>
-                        </li>
-                        <li>
-                            <p><i class="fas fa-phone-square"></i>Phone: <a href="#">07....</a></p>
-                        </li>
-                        <li>
-                            <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             <div class="col-lg-8 col-sm-12">
                 <div class="contact-form-right">
                     <h2>GET IN TOUCH</h2>
@@ -66,6 +50,24 @@
                     </form>
                 </div>
             </div>
+            
+            <div class="col-lg-4 col-sm-12">
+                <div class="contact-info-left">
+                    <h2>CONTACT INFO</h2>
+                    <ul>
+                        <li>
+                            <p><i class="fas fa-phone-square"></i>Instagram: <a href="#"></a></p>
+                        </li>
+                        <li>
+                            <p><i class="fas fa-phone-square"></i>Phone: <a href="#">07....</a></p>
+                        </li>
+                        <li>
+                            <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+         
         </div>
     </div>
 </div>

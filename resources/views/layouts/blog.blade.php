@@ -37,9 +37,9 @@
                     <div class="card-deck">
                             @foreach ($chunk as $data)
                             <div class="col-md-3">
-                                <div class="card" style="width: 15rem;">
+                                <div class="card">
                                         <img src="{{ url('/post_thumbnails') }}/{{ $data->blog_thumbnail }}"
-                                            class="card-img-top" alt="..." style="height: 150px">
+                                            class="card-img-top" alt="..." style="height: 180px">
                                         <div class="card-body">
                                             <h5 class="card-title"><a
                                                     href="{{ url('/' . $data->slug) }}">{{ $data->title }}</a>
@@ -55,7 +55,7 @@
                                             </h5>
                                             <p class="card-text">{!! Str::words($data->body, $limit = 20, $end = '....... <a href=' . url('/' . $data->slug) . '>Read More</a>') !!}
                                             </p>
-                                            <p class="card-footer"><small
+                                            {{-- <p class="card-footer"><small
                                                     class="text-muted">{{ $data->created_at->format('M d,Y \a\t h:i a') }}
                                                     By <a
                                                         href="{{ url('/user/' . $data->author_id) }}">{{ $data->author->name }}</a></small>
@@ -63,7 +63,7 @@
                                                        @if (!Auth::guest() && ($data->author_id == Auth::user()->id || Auth::user()->is_admin()))
                                                         <small><a href="{{ url('edit/'.$data->slug)}}">Edit Post</a></small>       
                                                         @endif
-                                                    </p>
+                                                    </p> --}}
                                         </div>
                                     </div>
                                 </div>

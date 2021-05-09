@@ -6,6 +6,7 @@
 @section('content')
     <div class="col-xl-12">
         <div class="section_title text-center mb-55">
+            <br>
             <h3><b>Write Blog</b> </h3>
 
         </div>
@@ -27,17 +28,8 @@
                     </div>
                 </div>
 
-                {{-- <div class="form-group">
-                    <label for="images">Upload Images for blog</label>
-                    <input type="file" name="images[]" multiple class="form-control" accept="image/*">
-                    @if ($errors->has('files'))
-                      @foreach ($errors->get('files') as $error)
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $error }}</strong>
-                      </span>
-                      @endforeach
-                    @endif
-                </div> --}}
+                <div class="form-group">
+                <label for="blog_thumbnail">Enter Blog Content</label>
                 <textarea class="description" name="body">{{ old('body') }}</textarea>
                 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
                 <script>
@@ -51,6 +43,7 @@
                     });
 
                 </script>
+                </div>
             </div>
 
 
@@ -60,6 +53,7 @@
             </div>
         </form>
     </div>
+    <br>
     {{-- <script>
      $(function() {
     // Multiple images preview in browser

@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
       <!-- Bootstrap CSS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <link href="{{ asset('css/bootstrap.min.css') }}" defer rel="stylesheet" type="text/css">
       <!-- Site CSS -->
       <link  href="{{ asset('css/style.css') }}" defer rel="stylesheet" type="text/css">

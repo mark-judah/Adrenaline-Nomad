@@ -65,7 +65,6 @@ class PostController extends Controller
   {
     request()->validate([
       'blog_thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-      'images' => 'required',
 
  ]);
  //for the blog thumbnail
@@ -90,7 +89,6 @@ class PostController extends Controller
   // }
     $post = new Posts();
     $post->title = $request->get('title');
-    $post->name="$name";
     $post->blog_thumbnail="$postThumbnail";
     $post->body = $request->get('body');
     $post->slug = Str::slug($post->title);

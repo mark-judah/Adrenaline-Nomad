@@ -18,9 +18,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <h1 class="m-b-20"><strong>THE ADRENALINE NOMAD</strong></h1>
-                                <p class="m-b-40">My mission in life is not to merely survive but to thrive and to do so
-                                    with some passion, some compassion, some humor, and some style ~Maya Angelou
-                                </p>
+                                <h2><span style="color:white"><strong>TRAVEL | ADVENTURE | ADRENALINE | STORY
+                                            TELLING</strong></span></h2>
                             </div>
                         </div>
                     </div>
@@ -31,9 +30,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <h1 class="m-b-20"><strong>THE ADRENALINE NOMAD</strong></h1>
-                                <p class="m-b-40">My mission in life is not to merely survive but to thrive and to do so
-                                    with some passion, some compassion, some humor, and some style ~Maya Angelou
-                                </p>
+                                <h2><span style="color:white"><strong>TRAVEL | ADVENTURE | ADRENALINE | STORY
+                                            TELLING</strong></span></h2>
                             </div>
                         </div>
                     </div>
@@ -44,9 +42,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <h1 class="m-b-20"><strong>THE ADRENALINE NOMAD</strong></h1>
-                                <p class="m-b-40">My mission in life is not to merely survive but to thrive and to do so
-                                    with some passion, some compassion, some humor, and some style ~Maya Angelou
-                                </p>
+                                <h2><span style="color:white"><strong>TRAVEL | ADVENTURE | ADRENALINE | STORY
+                                            TELLING</strong></span></h2>
                             </div>
                         </div>
                     </div>
@@ -56,79 +53,30 @@
         </div>
 
         <br>
-        
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section_title text-center mb-55">
-                        <h3><b>About Me</b> </h3>
-                    </div>
-                    <a href="#"><img src="{{ asset('images/coverPhoto.png') }}">
-                    </a>
-
-                </div>
-{{-- 
-                <div class="col-md-3.5">
-                    <div class="section_title text-center mb-55">
-                        <h3><b>Places to visit in Nairobi</b> </h3>
-                    </div>
-                    <div class="d-flex flex-row">
-                        <div class="p-2"><img src="{{ asset('images/gtd.jpg') }}" style="width: 100px">
-                        </div>
-                        <div class="p-2">Family friendy adventures</div>
-
-                    </div>
-                    <br>
-
-                    <div class="d-flex flex-row">
-                        <div class="p-2"><img src="{{ asset('images/gte.jpg') }}" style="width: 100px"
-                                height="80px">
-                        </div>
-                        <div class="p-2">Perfect spots for dates</div>
-
-                    </div>
-                    <br>
-                    <div class="d-flex flex-row">
-                        <div class="p-2"><img src="{{ asset('images/gtf.jpg') }}" style="width: 100px">
-                        </div>
-                        <div class="p-2">Cycling chronicles</div>
-
-                    </div>
-                    <br>
-                    <div class="d-flex flex-row">
-                        <div class="p-2"><img src="{{ asset('images/karura.jpg') }}" style="width: 100px">
-                        </div>
-                        <div class="p-2">For Adrenaline junkies</div>
-
-                    </div>
-                    <br>
-                </div> --}}
-            </div>
-        </div>
-
+        <p style="text-align: center;">My mission in life is not to merely survive but to thrive and to do so
+                with some passion, some compassion, some humor, and some style
+            </p>
+            <p style="text-align: center;"><strong>~Maya Angelou</strong></p>
         <!-- End Slider -->
         <div class="container">
-            <br>
-            <div class="col-xl-12">
+            <div class="col-xl-12 col-xs-12 col-centered">
                 <div class="section_title text-center mb-55">
                     <h3><b>Latest Posts</b> </h3>
-
-                </div>
-            </div>
+                    <br>
             <!--Show List Of posts-->
             @isset($posts)
                 @if (!$posts->count())
                     <div class="alert alert-info" role="alert">
                         No Blog Posts are availabe.Login to write a new post </div>
                 @else
-                    <div class="">
+                    <div class="col-lg-12 col-sm-12 col-centered">
                         @foreach ($posts->chunk(4) as $chunk)
                             <div class="card-deck">
                                 @foreach ($chunk as $data)
                                     <div class="col-md-3">
-                                        <div class="card" style="width: 14rem;">
+                                        <div class="card">
                                             <img src="{{ url('/post_thumbnails') }}/{{ $data->blog_thumbnail }}"
-                                                class="card-img-top" alt="..." style="height: 150px">
+                                                class="card-img-top" alt="..." style="height: 180px">
                                             <div class="card-body">
                                                 <h5 class="card-title"><a
                                                         href="{{ url('/' . $data->slug) }}">{{ $data->title }}</a>
@@ -144,12 +92,12 @@
                                                 </h5>
                                                 <p class="card-text">{!! Str::words($data->body, $limit = 20, $end = '....... <a href=' . url('/' . $data->slug) . '>Read More</a>') !!}
                                                 </p>
-                                                <p class="card-footer"><small
+                                                {{-- <p class="card-footer"><small
                                                         class="text-muted">{{ $data->created_at->format('M d,Y \a\t h:i a') }}
                                                         By <a
                                                             href="{{ url('/user/' . $data->author_id) }}">{{ $data->author->name }}</a></small>
 
-                                                </p>
+                                                </p> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -162,6 +110,9 @@
                     </div>
                 @endif
             @endisset
+            
+        </div>
+    </div>
         </div>
 
     @endsection
