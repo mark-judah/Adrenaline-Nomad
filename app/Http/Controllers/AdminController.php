@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
-use App\Posts;
+use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -15,7 +16,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $posts = Posts::where('active', '1')->orderBy('created_at', 'desc')->paginate(20);
+        $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(20);
+        //$posts= DB::table('posts')->where('active','1' )->get();
         $title = 'Latest Posts';
         return view('layouts.admin_blog_list',[ 'posts' => $posts]);    }
 

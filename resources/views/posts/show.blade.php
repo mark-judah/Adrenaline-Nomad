@@ -37,11 +37,13 @@
             <div class="container">
                 <div class="col-lg-8 col-sm-12 mx-auto">
                     <p style="text-align: center;">{!! $data['posts']->body !!}</p>
+                    @isset($data['posts']->created_at)
                     <p class="card-text"><small
                             class="text-muted">{{ $data['posts']->created_at->format('M d,Y \a\t h:i a') }} By
                             <a
                                 href="{{ url('/user/' . $data['posts']->author_id) }}">{{ $data['posts']->author->name }}</a></small>
                     </p>
+                    @endisset
 
                     <div class="coment-bottom bg-white">
                         <div>
@@ -66,7 +68,6 @@
                         @endif
 
                         <br>
-                        @if ($data['comments'])
                             <ul style="list-style: none; padding: 0">
                                 @foreach ($data['comments'] as $comment)
                                     <div class="list-group">
@@ -85,7 +86,7 @@
                                     <br>
                                 @endforeach
                             </ul>
-                        @endif
+
 
                     </div>
                 </div>

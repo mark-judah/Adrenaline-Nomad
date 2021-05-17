@@ -4,7 +4,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 // Comment class instance will refer to comment table in database
-class Comments extends Model
+class Comment extends Model
 {
   //comments table in database
   protected $guarded = [];

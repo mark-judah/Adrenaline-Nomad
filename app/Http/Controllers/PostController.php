@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
-use App\Posts;
-use App\Comments;
+use App\Post;
+use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostFormRequest;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +26,8 @@ class PostController extends Controller
    //display in home page
    public function fetch_blogs()
    {
-     $posts = Posts::where('active', '1')->orderBy('created_at', 'desc')->paginate(4);
+     $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(4);
+     //$posts= DB::table('posts')->where('active','1' )->get();
      $title = 'Latest Posts';
      //return view('layouts.home')->withPost($posts)->withTitle($title);
      return view('layouts.home',[ 'posts' => $posts]);
@@ -34,7 +35,8 @@ class PostController extends Controller
   //display in blog page
   public function index()
   {
-    $posts = Posts::where('active', '1')->orderBy('created_at', 'desc')->paginate(7);
+    $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(7);
+    //$posts= DB::table('posts')->where('active','1' )->get();
     $title = 'Latest Posts';
     //return view('layouts.home')->withPost($posts)->withTitle($title);
     return view('layouts.blog',[ 'posts' => $posts]);
@@ -77,28 +79,22 @@ class PostController extends Controller
      $insert['image'] = "$postThumbnail";
  }
 
-  // //for the blog images
-  // if ($request->hasfile('images')) {
-  //   $images = $request->file('images');
-
-  //   foreach($images as $image) {
-  //     $name = date('YmdHis') . "." . $image->getClientOriginalName();
-  //     $path = $image->storeAs('uploads', $name, 'public');
- 
-  //   }
-  // }
-    $post = new Posts();
+    $post = new Post();
     $post->title = $request->get('title');
     $post->blog_thumbnail="$postThumbnail";
     $post->body = $request->get('body');
     $post->slug = Str::slug($post->title);
+    $post->author_id = $request->user()->id;
 
-    $duplicate = Posts::where('slug', $post->slug)->first();
+    if(isset($post->slug)){
+   // $duplicate = DB::table('posts')->where('slug',$post->slug)->get();
+    $duplicate = Post::where('slug', $post->slug)->first();
     if ($duplicate) {
       return redirect('new-post')->withErrors('Title already exists.')->withInput();
     }
+  }
 
-    $post->author_id = $request->user()->id;
+
     if ($request->has('save')) {
       $post->active = 0;
       $message = 'Post saved successfully';
@@ -119,17 +115,21 @@ class PostController extends Controller
    */
   public function show($slug)
   {
-    $post = Posts::where('slug', $slug)->first();
+    $post = Post::where('slug', $slug)->first();
+    // $post= DB::table('posts')->where('slug',$slug)->first();
+    //dump($post);
     $data=  array();
     $data['posts']=$post; 
 
     if ($post) {
       if ($post->active == false)
         return redirect('/')->withErrors('requested page not found');
+
       $comments = $post->comments;
       $data['comments']=$comments; 
+    
 
-    } else {
+    } else { 
       return redirect('/')->withErrors('requested page not found');
     }
     //return view('posts.show')->withPost($post)->withComments($comments);
