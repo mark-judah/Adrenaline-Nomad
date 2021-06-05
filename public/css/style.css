@@ -1201,9 +1201,23 @@ form
      opacity: 1;
 }
 /*------------------------------------------------------------------ Footer Main -------------------------------------------------------------------*/
- .footer-main{
+footer{
+	background: linear-gradient(
+        rgba(73, 70, 70, 0.75),
+        rgba(73, 70, 70, 0.75)
+              ),
+    url("/images/footer_bg.jpg") center center ;
+	background-size: cover;
+	height: 360px;
+	
+   
+
+} 
+.footer-main{
      padding: 70px 0px;
-     background: #202020;
+     /* background: #202020; */
+     
+
 }
  .footer-widget h4 {
      color: #ffffff;
@@ -1224,9 +1238,9 @@ form
      left: 0px;
 }
  .footer-widget p {
-     color: #cccccc;
+     color: #ffffff;
      font-weight: 400;
-     font-size: 14px;
+     font-size: 16px;
      padding-bottom: 20px;
 }
  .footer-widget ul{
@@ -1335,18 +1349,20 @@ form
 }
  .footer-link-contact ul li p{
      padding-left: 25px;
-     color: #cccccc;
+     color: #ffffff;
      position: relative;
 }
  .footer-link-contact ul li p{
-     font-size: 16px;
-     color: #cccccc;
+     font-size: 19px;
+     color: #ffffff;
      font-weight: 300;
      padding-right: 16px;
      line-height: 24px;
 }
  .footer-link-contact ul li p a{
-     color: #cccccc;
+     color: #ffffff;
+     font-size: 19px;
+
 }
  .footer-link-contact ul li p a:hover{
      color: #f4623a;

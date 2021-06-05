@@ -13,7 +13,7 @@
             <ul class="slides-container">
 
                 <li class="text-center">
-                    <img src="{{ asset('images/banner1b.jpg') }}">
+                    <img src="{{ asset('images/banner1b.jpg') }}" class="img-responsive">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -25,7 +25,7 @@
                     </div>
                 </li>
                 <li class="text-center">
-                    <img src="{{ asset('images/banner1c.jpg') }}">
+                    <img src="{{ asset('images/banner1c.jpg') }}" class="img-responsive">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -37,7 +37,7 @@
                     </div>
                 </li>
                 <li class="text-center">
-                    <img src="{{ asset('images/banner1a.jpg') }}">
+                    <img src="{{ asset('images/banner1a.jpg') }}" class="img-responsive">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -54,15 +54,17 @@
 
         <br>
         <p style="text-align: center;">My mission in life is not to merely survive but to thrive and to do so
-                with some passion, some compassion, some humor, and some style
-            </p>
-            <p style="text-align: center;"><strong>~Maya Angelou</strong></p>
+            with some passion, some compassion, some humor, and some style
+        </p>
+        <p style="text-align: center;"><strong>~Maya Angelou</strong></p>
+        <br>
         <!-- End Slider -->
         <div class="container">
             <div class="col-xl-12 col-xs-12 col-centered">
                 <div class="section_title text-center mb-55">
                     <h3><b>Latest Posts</b> </h3>
-                    <br>
+                </div>
+            </div>
             <!--Show List Of posts-->
             @isset($posts)
                 @if (!$posts->count())
@@ -110,9 +112,6 @@
                     </div>
                 @endif
             @endisset
-            
-        </div>
-    </div>
         </div>
 
     @endsection

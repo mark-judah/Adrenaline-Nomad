@@ -28,39 +28,51 @@
     @section('title', 'Page Title')
 
     @section('navbar')
-    @parent
+        @parent
     @endsection
 
     @section('content')
-    <br>
-    <table class="table table-striped table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Blog Title</th>
-                <th scope="col">Author</th>
-                <th scope="col">Date Posted</th>
-                <th scope="col">Last Updated</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($posts as $post)
-            <tr>
-                <th scope="row">{{ $loop->iteration }}</th>
-                <td>{{$post->title}}</td>
-                <td>{{$post->author->name}}</td>
-                <td>{{$post->created_at}}</td>
-                <td>{{$post->updated_at}}</td>
-                
-            </tr>
-            @endforeach
+     <div class="col-xl-12">
+            <div class="section_title text-center ">
+                <br>
+                <h3><b>Blogs</b> </h3>
 
-        </tbody>
-    </table>
+            </div>
+        </div>
+        <br>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Blog Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Date Posted</th>
+                    <th scope="col">Last Updated</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($posts as $post)
+                    <tr>
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $post->title }}</td>
+                        <td>{{ $post->author->name }}</td>
+                        <td>{{ $post->created_at }}</td>
+                        <td>{{ $post->updated_at }}</td>
+                        <td><a href="{{ url('edit/'. $post->slug) }}"><i class="material-icons">edit</i></a></td>
+                        <td><a href="{{ url('delete/'. $post->id) }}"><i class="material-icons">delete</i></a></td>
+
+                    </tr>
+                @endforeach
+
+            </tbody>
+        </table>
     @stop
 
     @section('footer')
 
     @stop
 </body>
+
 </html>

@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserListController;
 
 use Illuminate\Support\Facades\Auth;
 /*
@@ -25,8 +26,14 @@ Route::view('/login', 'auth.login');
 Route::view('/contact', 'layouts.contact');
 Route::view('/about', 'layouts.about');
 Route::view('/register', 'auth.register');
+Route::view('/edit-content', 'layouts.edit_content');
+
 Route::get('blog', 'PostController@index');
 Route::get('admin', [AdminController::class, 'index']);
+Route::get('users', [UserListController::class, 'index']);
+Route::get('edit_user/{id}', [UserListController::class, 'edit']);
+Route::get('delete_user/{id}', [UserListController::class, 'destroy']);
+Route::post('update_user', 'UserListController@update');
 
 //logout
 Route::get('logout', function(){
@@ -46,7 +53,7 @@ Route::middleware(['auth'])->group(function () {
     // edit post form
     Route::get('edit/{slug}', 'PostController@edit');
     // update post
-    Route::post('update', 'PostController@update');
+    Route::post('update_blog', 'PostController@update');
     // delete post
     Route::get('delete/{id}', 'PostController@destroy');
     // display user's all posts

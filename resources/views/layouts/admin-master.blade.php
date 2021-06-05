@@ -72,7 +72,7 @@
                                 <li class="dropdown">
                                     <a href="" class="nav-link" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                                     <ul class="dropdown-menu">
-                                        @if (!Auth::guest() && Auth::user()->is_admin())
+                                        @if ((!Auth::guest() && Auth::user()->is_admin()) || Auth::user()->is_author())
                                             <li><a href="{{ url('admin') }}">Admin Panel</a></li>
                                         @endif
                                         <li><a href="{{ url('logout') }}">Logout</a></li>
@@ -114,7 +114,13 @@
                             <span class="user-name">
                                 <strong>{{ Auth::user()->name }}</strong>
                             </span>
-                            <span class="user-role">Administrator</span>
+                            @if (!Auth::guest() && Auth::user()->is_admin())
+                                <span class="user-role">Administrator</span>
+                            @endif
+
+                            @if (!Auth::guest() && Auth::user()->is_author())
+                                <span class="user-role">Author</span>
+                            @endif
                             <span class="user-status">
                                 <i class="fa fa-circle"></i>
                                 <span>Online</span>
@@ -133,6 +139,18 @@
                             <li>
                                 <a href="/new-post">
                                     <i class="material-icons">add</i><span>New Blog</span>
+                                </a>
+                            </li>
+                            @if (!Auth::guest() && Auth::user()->is_admin())
+                            <li>
+                                <a href="/users">
+                                    <i class="material-icons">people</i><span>Users</span>
+                                </a>
+                            </li>
+                            @endif
+                            <li>
+                                <a href="/edit-content">
+                                    <i class="material-icons">code</i><span>Edit Content</span>
                                 </a>
                             </li>
 
@@ -156,7 +174,16 @@
             </nav>
 
             <!-- End Sidebar -->
-
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ $error }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endforeach
+            @endif
 
             <div class="container">
                 @yield('content')

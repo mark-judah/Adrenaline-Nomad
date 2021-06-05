@@ -60,4 +60,13 @@ class User extends Authenticatable implements AuthenticatableContract, CanResetP
     }
     return false;
   }
+
+  public function is_author()
+  {
+    $role = $this->role;
+    if ($role == 'author') {
+      return true;
+    }
+    return false;
+  }
 }
