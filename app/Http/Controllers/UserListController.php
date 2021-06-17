@@ -82,9 +82,9 @@ class UserListController extends Controller
 
             $data = array('name' => $username, "email" => $email, "role" => $role);
             DB::table('users')->where('id', $user->id)->update($data);
-            echo ('Profile Updated Succesfully');
+            return redirect('/users')->withErrors('Profile updated successfuly')->withInput();
         } else {
-            echo ('Invalid Operation. You have not sufficient permissions');
+            return redirect('/')->withErrors('You have insufficient permisions')->withInput();
         }
     }
 
@@ -99,9 +99,9 @@ class UserListController extends Controller
         $user = User::find($id);
         if (Auth::user()->is_admin()) {
             $user->delete();
-            echo ('User deleted Successfully');
+            return redirect('/users')->withErrors('User deleted successfuly')->withInput();
         } else {
-            echo('Invalid Operation. You have not sufficient permissions');
+            return redirect('/')->withErrors('You have insufficient permisions')->withInput();
         }
     }
 }

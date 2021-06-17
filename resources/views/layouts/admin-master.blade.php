@@ -47,12 +47,48 @@
                 <div class="container">
                     <!-- Start Header Navigation -->
                     <div class="navbar-header">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" onclick="openNav()"
                             aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="material-icons">dehaze</i>
                         </button>
 
                     </div>
+
+                    <!--Side Nav-->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul>
+                <li class="nav-item active"><a class="nav-link" href="/">HOME</a></li>
+               
+                <li class="nav-item"><a class="nav-link" href="blog">BLOGS</a></li>
+               
+
+                <li class="nav-item"><a class="nav-link" href="/about">ABOUT</a></li>
+               
+
+                <li class="nav-item"><a class="nav-link" href="/contact">TALK TO ME</a></li>
+               
+
+                @unless(Auth::check())
+                    <li class="nav-item"><a class="nav-link" href="/login">LOGIN</a></li>
+                @endunless
+
+                @auth
+                    <li class="dropdown">
+                        <a href="" class="nav-link" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                        <ul class="dropdown-menu">
+                            @if ((!Auth::guest() && Auth::user()->is_admin()) || Auth::user()->is_author())
+                                <li><a href="{{ url('admin') }}">Admin Panel</a></li>
+                            @endif
+                           
+
+                            <li><a href="{{ url('logout') }}">Logout</a></li>
+                        </ul>
+                    </li>
+                @endauth
+            </ul>
+        </div>
+        <!--Side Nav-->
                     <!-- End Header Navigation -->
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -149,17 +185,11 @@
                             </li>
                             @endif
                             <li>
-                                <a href="/edit-content">
-                                    <i class="material-icons">code</i><span>Edit Content</span>
-                                </a>
-                            </li>
-
-                            {{-- <li>
                                 <a href="">
-                                    <i class="material-icons">message</i><span>Comments</span>
+                                    <i class="material-icons">message</i><span>Messages</span>
                                     <span class="badge badge-pill badge-danger">3</span>
                                 </a>
-                            </li> --}}
+                            </li>
 
                             <li><a href="{{ url('logout') }}"><i class="material-icons">exit_to_app</i>Logout</a>
                             </li>
@@ -208,6 +238,17 @@
         <script src="{{ asset('js/contact-form-script.js') }}" defer></script>
         <script src="{{ asset('js/custom.js') }}" defer></script>
         <script src="{{ asset('js/popper.min.js') }}" defer></script>
+
+         <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+
+        </script>
 </body>
 
 

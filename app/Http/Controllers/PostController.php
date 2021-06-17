@@ -26,7 +26,7 @@ class PostController extends Controller
   //display in home page
   public function fetch_blogs()
   {
-    $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(4);
+    $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(6);
     //$posts= DB::table('posts')->where('active','1' )->get();
     $title = 'Latest Posts';
     //return view('layouts.home')->withPost($posts)->withTitle($title);
@@ -39,7 +39,7 @@ class PostController extends Controller
     //$posts= DB::table('posts')->where('active','1' )->get();
     $title = 'Latest Posts';
     //return view('layouts.home')->withPost($posts)->withTitle($title);
-    return view('layouts.blog', ['posts' => $posts]);
+    return view('posts.blog', ['posts' => $posts]);
   }
 
 
@@ -54,7 +54,7 @@ class PostController extends Controller
     if ($request->user()->can_post()) {
       return view('posts.create');
     } else {
-      echo('You have not sufficient permissions for writing post');
+      return redirect('/admin')->withErrors('You have insufficient permisions')->withInput();
     }
   }
 
@@ -122,12 +122,12 @@ class PostController extends Controller
 
     if ($post) {
       if ($post->active == false)
-       echo('requested page not found');
+      return redirect('/')->withErrors('Requested page not found')->withInput();
 
       $comments = $post->comments;
       $data['comments'] = $comments;
     } else {
-      echo('requested page not found');
+      return redirect('/')->withErrors('Requested page not found')->withInput();
     }
     //return view('posts.show')->withPost($post)->withComments($comments);
     // return view('posts.show',[ 'post' => $post]);
@@ -146,7 +146,7 @@ class PostController extends Controller
     if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
       return view('posts.edit')->with('post', $post);
     else {
-     echo('you have not sufficient permissions');
+      return redirect('/admin')->withErrors('You have insufficient permisions')->withInput();
     }
   }
 
@@ -186,9 +186,9 @@ class PostController extends Controller
         $landing = $post->slug;
       }
       $post->save();
-      echo($message);
+      return redirect('edit/' . $post->slug)->withErrors($message)->withInput();
     } else {
-       echo('you have not sufficient permissions');
+      return redirect('edit/' . $post->slug)->withErrors('You have insufficient permisions')->withInput();
     }
   }
 
@@ -203,9 +203,9 @@ class PostController extends Controller
     $post = Post::find($id);
     if ($post && ($post->author_id == $request->user()->id || $request->user()->is_admin())) {
       $post->delete();
-      echo ('Post deleted Successfully');
+      return redirect('/')->withErrors('Post deleted successfuly')->withInput();
     } else {
-      echo('Invalid Operation. You have not sufficient permissions');
+      return redirect('edit/' . $post->slug)->withErrors('You have insufficient permisions')->withInput();
     }
   }
 }

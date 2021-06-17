@@ -28,21 +28,31 @@
     @endsection
 
     @section('content')
+        <div class="blog-banner-image">
+            <div class="container" style="padding:150px">
+                <h3 style=" width: 100%; text-align: center; color:#ffffff;">
+                    {{ $data['posts']->title }}</h5>
+                    <hr class="divider my-2" />
+            </div>
+        </div>
         <br>
         @if ($data['posts'])
-            <h5 style=" width: 100%; text-align: center;">
-                {{ $data['posts']->title }}</h5>
-            <hr class="divider my-2" />
 
             <div class="container">
-                <div class="col-lg-8 col-sm-12 mx-auto">
+                <div class="col-lg-10 col-sm-12 mx-auto">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $data['posts']->title }}</li>
+                        </ol>
+                    </nav>
                     <p style="text-align: center;">{!! $data['posts']->body !!}</p>
                     @isset($data['posts']->created_at)
-                    <p class="card-text"><small
-                            class="text-muted">{{ $data['posts']->created_at->format('M d,Y \a\t h:i a') }} By
-                            <a
-                                href="{{ url('/user/' . $data['posts']->author_id) }}">{{ $data['posts']->author->name }}</a></small>
-                    </p>
+                        <p class="card-text"><small
+                                class="text-muted">{{ $data['posts']->created_at->format('M d,Y \a\t h:i a') }} By
+                                <a
+                                    href="{{ url('/user/' . $data['posts']->author_id) }}">{{ $data['posts']->author->name }}</a></small>
+                        </p>
                     @endisset
 
                     <div class="coment-bottom bg-white">
@@ -68,24 +78,24 @@
                         @endif
 
                         <br>
-                            <ul style="list-style: none; padding: 0">
-                                @foreach ($data['comments'] as $comment)
-                                    <div class="list-group">
-                                        <a href="#"
-                                            class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5>{{ $comment->author->name }}</h5>
-                                                <small class="text-muted">
-                                                    <p>{{ $comment->created_at->format('M d,Y \a\t h:i a') }}</p>
-                                                </small>
-                                            </div>
-                                            <p>{{ $comment->body }}</p>
+                        <ul style="list-style: none; padding: 0">
+                            @foreach ($data['comments'] as $comment)
+                                <div class="list-group">
+                                    <a href="#"
+                                        class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5>{{ $comment->author->name }}</h5>
+                                            <small class="text-muted">
+                                                <p>{{ $comment->created_at->format('M d,Y \a\t h:i a') }}</p>
+                                            </small>
+                                        </div>
+                                        <p>{{ $comment->body }}</p>
 
-                                        </a>
-                                    </div>
-                                    <br>
-                                @endforeach
-                            </ul>
+                                    </a>
+                                </div>
+                                <br>
+                            @endforeach
+                        </ul>
 
 
                     </div>
@@ -98,6 +108,10 @@
 
 
     @endsection
+
+    @section('footer')
+
+    @stop
 </body>
 
 </html>

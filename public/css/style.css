@@ -717,7 +717,7 @@ form
 }
 /*------------------------------------------------------------------ Slider -------------------------------------------------------------------*/
  .cover-slides{
-     height: 100vh;
+     height: 80vh;
 }
  .slides-navigation a {
      position: absolute;
@@ -750,18 +750,9 @@ form
  .cover-slides .container > .row {
      height: 100%;
 }
- .overlay-background {
-     background: #333;
-     position: absolute;
-     height: 100%;
-     width: 100%;
-     left: 0;
-     top: 0;
-     opacity: 0.5;
-}
+ 
  .cover-slides h1{
-     font-family: 'Montserrat', sans-serif;
-     font-weight: 500;
+     
      font-size: 64px;
      color: #fff;
 }
@@ -770,13 +761,7 @@ form
      color: #fff;
      padding-bottom: 30px;
 }
- .slides-pagination a{
-     border: 2px solid #ffffff;
-}
- .slides-pagination a.current{
-     background: #f4623a;
-     border: 2px solid #f4623a;
-}
+ 
  .cover-slides p a{
      font-size: 24px;
      color: #ffffff;
@@ -1200,27 +1185,69 @@ form
      bottom: 0;
      opacity: 1;
 }
-/*------------------------------------------------------------------ Footer Main -------------------------------------------------------------------*/
-footer{
-	background: linear-gradient(
-        rgba(73, 70, 70, 0.75),
-        rgba(73, 70, 70, 0.75)
-              ),
-    url("/images/footer_bg.jpg") center center ;
-	background-size: cover;
-	height: 360px;
-	
-   
 
-} 
+/*------------------------------------------------------------------ Home page about me-------------------------------------------------------------------*/
+.how-section1{
+    margin-top:-15%;
+    padding: 5%;
+}
+.how-section1 h4{
+    color: #ffa500;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.how-section1 .row
+{
+    margin-top: 10%;
+}
+.how-img 
+{
+    text-align: center;
+}
+.how-img img{
+    width: 50%;
+}
+
+/*------------------------------------------------------------------ Home page about me end-------------------------------------------------------------------*/
+.blog-banner-image{
+   background-image:url(/images/banner-title-image.jpg);
+   background-size:cover;
+   height: 300px;
+}
+
+/*------------------------------------------------------------------ Footer Main -------------------------------------------------------------------*/
+/* @media not screen and (max-width: 600px) {
 .footer-main{
-     padding: 70px 0px;
-     /* background: #202020; */
-     
+    padding: 150px;
+    background: linear-gradient(
+       rgba(73, 70, 70, 0.75),
+       rgba(73, 70, 70, 0.75)
+             ),
+   url("/images/footer_bg.jpg");
+   background-repeat:no-repeat;
+   background-size:cover;
+   background-position:center;
 
 }
+}
+@media only screen and (max-width: 600px) {
+    .footer-main{
+        padding: 50px 0px;
+        background: linear-gradient(
+           rgba(73, 70, 70, 0.75),
+           rgba(73, 70, 70, 0.75)
+                 ),
+       url("/images/footer_bg.jpg");
+       background-repeat:no-repeat;
+       background-size:contain;
+       background-position:center;
+        
+   }
+  }
+
  .footer-widget h4 {
-     color: #ffffff;
+     color: #f4623a;
      font-size: 16px;
      text-transform: uppercase;
      letter-spacing: 2px;
@@ -1229,7 +1256,6 @@ footer{
      font-weight: 700;
 }
  .footer-widget h4::before {
-     border-bottom: 3px solid #f4623a;
      content: "";
      height: 3px;
      width: 100%;
@@ -1241,7 +1267,6 @@ footer{
      color: #ffffff;
      font-weight: 400;
      font-size: 16px;
-     padding-bottom: 20px;
 }
  .footer-widget ul{
      display: inline-block;
@@ -1321,8 +1346,8 @@ footer{
      padding-left: 20px;
 }
  .footer-link-contact h4{
-     color: #ffffff;
-     font-size: 16px;
+    color: #f4623a;
+    font-size: 16px;
      text-transform: uppercase;
      letter-spacing: 2px;
      margin-bottom: 20px;
@@ -1330,7 +1355,6 @@ footer{
      font-weight: 700;
 }
  .footer-link-contact h4::before {
-     border-bottom: 3px solid #f4623a;
      content: "";
      height: 3px;
      width: 100%;
@@ -1366,7 +1390,7 @@ footer{
 }
  .footer-link-contact ul li p a:hover{
      color: #f4623a;
-}
+}*/
 /*------------------------------------------------------------------ Copyright -------------------------------------------------------------------*/
  .footer-copyright{
      background: #2c2c2c;
@@ -1383,7 +1407,57 @@ footer{
 }
  .footer-copyright p a:hover{
      color: #f4623a;
+} 
+/*------------------------------------------------------------------ Side Nav -------------------------------------------------------------------*/
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 14px 10px;
+    padding-right: 50px;
+    text-decoration: none;
+    font-size: 12   px;
+    color: #000;
+    display: block;
+    transition: 0.3s;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    text-transform: uppercase;
 }
+  
+  .sidenav a:hover {
+    color: #f4623a;;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 9px;
+    background: #161616;
+    color: #fff;
+    line-height: 26px;
+    font-size: 14px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+/*------------------------------------------------------------------ Side Nav -------------------------------------------------------------------*/
+
+
+
 /*------------------------------------------------------------------ All Pages -------------------------------------------------------------------*/
  .all-title-box{
      background: url("../images/all-bg-title.jpg") no-repeat center center;

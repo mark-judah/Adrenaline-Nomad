@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserListController;
+use App\Http\Controllers\MessageController;
 
 use Illuminate\Support\Facades\Auth;
 /*
@@ -34,6 +35,7 @@ Route::get('users', [UserListController::class, 'index']);
 Route::get('edit_user/{id}', [UserListController::class, 'edit']);
 Route::get('delete_user/{id}', [UserListController::class, 'destroy']);
 Route::post('update_user', 'UserListController@update');
+Route::post('new-message', 'MessageController@store');
 
 //logout
 Route::get('logout', function(){
