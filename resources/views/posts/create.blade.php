@@ -51,8 +51,12 @@
                                 width: 900,
                                 height: 300,
                                 plugins: 'paste',
-                                paste_data_images: true
+                                paste_data_images: true,
 
+                                image_class_list: [{
+                                    title: 'img-responsive',
+                                    value: 'img-responsive'
+                                }, ]
                             });
 
                         </script>

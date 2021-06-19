@@ -1392,7 +1392,11 @@ form
      color: #f4623a;
 }*/
 /*------------------------------------------------------------------ Copyright -------------------------------------------------------------------*/
- .footer-copyright{
+img {
+    max-width: 100%;
+}
+
+.footer-copyright{
      background: #2c2c2c;
      padding: 20px 0px;
      position: relative;
