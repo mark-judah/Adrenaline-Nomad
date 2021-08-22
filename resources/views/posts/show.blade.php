@@ -28,13 +28,65 @@
     @endsection
 
     @section('content')
-        <div class="blog-banner-image">
+        <div id="blog-banner-image"
+            style="background-image: url({{ url('/banners') }}/{{ $data['posts']->slug_banner }})">
+            @if (!Auth::guest() && Auth::user()->is_admin())
+                <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
+                    style="float:right; margin:10px;"><small>Change Banner Image</small></button>
+            @endif
             <div class="container" style="padding:150px">
                 <h3 style=" width: 100%; text-align: center; color:#ffffff;">
-                    {{ $data['posts']->title }}</h5>
-                    <hr class="divider my-2" />
+                    {{ $data['posts']->title }}</h3>
+                <hr class="divider my-2" />
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change banner image</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container col-md-12 text-center">
+                            <form action="{{ url('update_slug_banner') }}" method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="post_id" value="{{ $data['posts']->id }}">
+                                <input type="hidden" name="slug" value="{{ $data['posts']->slug }}">
+
+                                <div class="form-group col-md-12 col-md-offset-5 ">
+                                    <div class="form-group">
+                                        <label for="slug_banner">Choose  Banner Image</label>
+                                        {{-- <input required type="file" class="form-control" name="images[]" id="gallery-photo-add" multiple> --}}
+
+                                        <input type="file" name="slug_banner" id="slug_banner" onchange="loadPreview(this);"
+                                            class="form-control">
+                                        <div class="gallery">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-md-12 text-center">
+                                    <input type="submit" name='publish' class="btn btn-success" value="Done" />
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <br>
         @if ($data['posts'])
 
@@ -59,23 +111,26 @@
                         <div>
                             <h2>Leave a comment</h2>
                         </div>
-                        @if (Auth::guest())
-                            <a class="nav-link" href="/login">Login to Comment</a>
-                            <br>
-                        @else
-                            <div class="panel-body">
-                                <form method="post" action="/comment/add">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <input type="hidden" name="on_post" value="{{ $data['posts']->id }}">
-                                    <input type="hidden" name="slug" value="{{ $data['posts']->slug }}">
-                                    <div class="form-group">
-                                        <textarea required="required" placeholder="Enter comment here" name="body"
-                                            class="form-control"></textarea>
-                                    </div>
-                                    <input type="submit" name='post_comment' class="btn btn-success" value="Post" />
-                                </form>
-                            </div>
-                        @endif
+
+                        <div class="panel-body">
+                            <form method="post" action="/comment/add">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="on_post" value="{{ $data['posts']->id }}">
+                                <input type="hidden" name="slug" value="{{ $data['posts']->slug }}">
+
+                                <div class="form-group">
+                                    <input required="required" type="text" name="name" placeholder="Enter name here"
+                                        class="form-control" />
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea required="required" placeholder="Enter comment here" name="body"
+                                        class="form-control"></textarea>
+                                </div>
+                                <input type="submit" name='post_comment' class="btn btn-success" value="Post" />
+                            </form>
+                        </div>
+
 
                         <br>
                         <ul style="list-style: none; padding: 0">
@@ -84,7 +139,7 @@
                                     <a href="#"
                                         class="list-group-item list-group-item-action flex-column align-items-start">
                                         <div class="d-flex w-100 justify-content-between">
-                                            <h5>{{ $comment->author->name }}</h5>
+                                            <h5>{{ $comment->name }}</h5>
                                             <small class="text-muted">
                                                 <p>{{ $comment->created_at->format('M d,Y \a\t h:i a') }}</p>
                                             </small>
@@ -112,6 +167,7 @@
     @section('footer')
 
     @stop
+
 </body>
 
 </html>

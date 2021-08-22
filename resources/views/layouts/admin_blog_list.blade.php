@@ -60,8 +60,8 @@
                         <td>{{ $post->author->name }}</td>
                         <td>{{ $post->created_at }}</td>
                         <td>{{ $post->updated_at }}</td>
-                        <td><a href="{{ url('edit/'. $post->slug) }}"><i class="material-icons">edit</i></a></td>
-                        <td><a href="{{ url('delete/'. $post->id) }}"><i class="material-icons">delete</i></a></td>
+                        <td><a href="{{ url('edit/'. $post->slug) }}" class="btn btn-primary"><i class="material-icons">edit</i></a></td>
+                        <td><a href="{{ url('delete/'. $post->id) }}" class="btn btn-danger"><i class="material-icons">delete</i></a></td>
 
                     </tr>
                 @endforeach

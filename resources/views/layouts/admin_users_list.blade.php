@@ -51,8 +51,8 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->role }}</td>
                             <td>{{ $user->created_at }}</td>
-                            <td><a href="{{ url('edit_user/'. $user->id) }}"><i class="material-icons">edit</i></a></td>
-                            <td><a href="{{ url('delete_user/'. $user->id) }}"><i class="material-icons">delete</i></a></td>
+                            <td><a href="{{ url('edit_user/'. $user->id) }}" class="btn btn-primary"><i class="material-icons">edit</i></a></td>
+                            <td><a href="{{ url('delete_user/'. $user->id) }}" class="btn btn-danger"><i class="material-icons">delete</i></a></td>
 
                         </tr>
                     @endforeach

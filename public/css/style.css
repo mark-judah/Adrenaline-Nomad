@@ -160,6 +160,7 @@
      transition: opacity 0.2s ease-out;
      font-size: 30px;
 }
+
 /*------------------------------------------------------------------ HEADER -------------------------------------------------------------------*/
  .main-top{
      background: #010101;
@@ -1210,11 +1211,20 @@ form
 }
 
 /*------------------------------------------------------------------ Home page about me end-------------------------------------------------------------------*/
-.blog-banner-image{
-   background-image:url(/images/banner-title-image.jpg);
+#blog-banner-image{
+   /* background-image:url(/images/banner-title-image.jpg); */
    background-size:cover;
+   background-repeat:no-repeat;
    height: 300px;
 }
+.blog-banner-placeholder{
+    /* background-image:url(../images/placeholder_image.png);
+    background-size:cover;
+    background-repeat:no-repeat; */
+    background-color: #C9C9C9;
+    height: 300px;
+ }
+
 
 /*------------------------------------------------------------------ Footer Main -------------------------------------------------------------------*/
 /* @media not screen and (max-width: 600px) {
@@ -1421,10 +1431,14 @@ img {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: #ffffff;
+    background-image: url("/images/nav_bg.png");
+    background-repeat: no-repeat;
+    background-color: #6A3E3E;
+    background-size: contain;
+    background-position: center;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 150px;
   }
   
   .sidenav a {
@@ -1432,7 +1446,7 @@ img {
     padding-right: 50px;
     text-decoration: none;
     font-size: 12   px;
-    color: #000;
+    color: #ffffff;
     display: block;
     transition: 0.3s;
     border-bottom: 1px solid rgba(0, 0, 0, 0.07);
@@ -1458,6 +1472,7 @@ img {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
+  
 /*------------------------------------------------------------------ Side Nav -------------------------------------------------------------------*/
 
 

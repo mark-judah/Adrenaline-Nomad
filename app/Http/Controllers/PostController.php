@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Post;
 use App\Comment;
+use App\AboutContent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostFormRequest;
 use Illuminate\Support\Facades\DB;
@@ -27,19 +28,21 @@ class PostController extends Controller
   public function fetch_blogs()
   {
     $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(6);
+    $content = DB::table('about_contents')->where('id','1' )->get();
+
     //$posts= DB::table('posts')->where('active','1' )->get();
     $title = 'Latest Posts';
     //return view('layouts.home')->withPost($posts)->withTitle($title);
-    return view('layouts.home', ['posts' => $posts]);
+    return view('layouts.home', ['posts' => $posts,'content'=>$content]);
   }
   //display in blog page
   public function index()
   {
     $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(7);
-    //$posts= DB::table('posts')->where('active','1' )->get();
-    $title = 'Latest Posts';
-    //return view('layouts.home')->withPost($posts)->withTitle($title);
-    return view('posts.blog', ['posts' => $posts]);
+    $about_content = DB::table('about_contents')->where('id','1' )->get();
+    
+    return view('posts.blog', ['posts' => $posts,'about_content'=>$about_content]);
+
   }
 
 
@@ -79,9 +82,20 @@ class PostController extends Controller
       $insert['image'] = "$postThumbnail";
     }
 
+    //for the blog banner
+    if ($files1 = $request->file('blog_banner')) {
+      // Define upload path
+      $destinationPath1 = public_path('/banners/'); // upload path
+      // Upload Orginal Image           
+      $postBanner = date('YmdHis') . "." . $files1->getClientOriginalExtension();
+      $files1->move($destinationPath1, $postBanner);
+      $insert['image'] = "$postBanner";
+    }
+
     $post = new Post();
     $post->title = $request->get('title');
     $post->blog_thumbnail = "$postThumbnail";
+    $post->slug_banner = "$postBanner";
     $post->body = $request->get('body');
     $post->slug = Str::slug($post->title);
     $post->author_id = $request->user()->id;
@@ -207,5 +221,66 @@ class PostController extends Controller
     } else {
       return redirect('edit/' . $post->slug)->withErrors('You have insufficient permisions')->withInput();
     }
+  }
+
+  public function update_slug_banner(Request $request)
+  {
+    $post_id = $request->input('post_id');
+    $slug = $request->input('slug');
+
+    $post = Post::find($post_id);
+
+    if ($files = $request->file('slug_banner')) {
+      // Define upload path
+      $destinationPath = public_path('/banners/'); // upload path
+      // Upload Orginal Image           
+      $slugBanner = date('YmdHis') . "." . $files->getClientOriginalExtension();
+      $files->move($destinationPath, $slugBanner);
+      $insert['image'] = "$slugBanner";
+
+      $post->slug_banner = "$slugBanner";
+      $post->save();
+
+
+      return redirect($slug);
+    }
+
+  }
+  public function update_banner(Request $request,AboutContent $aboutContent)
+  {
+    if(AboutContent::find(1)){
+      $aboutContent = AboutContent::find(1);
+      if ($files = $request->file('blog_banner')) {
+        // Define upload path
+        $destinationPath = public_path('/banners/'); // upload path
+        // Upload Orginal Image           
+        $postBanner = date('YmdHis') . "." . $files->getClientOriginalExtension();
+        $files->move($destinationPath, $postBanner);
+        $insert['image'] = "$postBanner";
+  
+        $aboutContent->blog_banner = "$postBanner";
+        $aboutContent->save();
+  
+  
+        return redirect('/blog');
+      }
+    }else{
+      if ($files = $request->file('blog_banner')) {
+        // Define upload path
+        $destinationPath = public_path('/banners/'); // upload path
+        // Upload Orginal Image           
+        $postBanner = date('YmdHis') . "." . $files->getClientOriginalExtension();
+        $files->move($destinationPath, $postBanner);
+        $insert['image'] = "$postBanner";
+  
+        $aboutContent->blog_banner = "$postBanner";
+        $aboutContent->save();
+  
+  
+        return redirect('/blog');
+      }
+    }
+    
+
   }
 }

@@ -42,6 +42,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="blog_banner">Choose  Banner Image</label>
+                        {{-- <input required type="file" class="form-control" name="images[]" id="gallery-photo-add" multiple> --}}
+
+                        <input type="file" name="blog_banner" id="blog_banner" onchange="loadPreview(this);"
+                            class="form-control">
+                        <div class="gallery">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
                         <label for="blog_thumbnail">Blog Content</label>
                         <textarea class="description" name="body">{{ old('body') }}</textarea>
                         <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>

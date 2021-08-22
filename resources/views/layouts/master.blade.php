@@ -18,6 +18,7 @@
     <link href="{{ asset('css/responsive.css') }}" defer rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
     <link href="{{ asset('css/custom.css') }}" defer rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/loader.css') }}" defer rel="stylesheet" type="text/css">
 
     <head>
         <div id="loadOverlay"
@@ -28,6 +29,7 @@
 </head>
 
 <body>
+    <div id="preloader"></div>
 
     <div>
         @section('navbar')
@@ -50,13 +52,14 @@
         <!-- Navbar -->
         <!-- Start Navigation -->
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-default bootsnav">
             <!-- Start Header Navigation -->
             <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" onclick="openNav()"
                     aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="material-icons">dehaze</i>
                 </button>
+
             </div>
 
             <!--Side Nav-->
@@ -92,6 +95,7 @@
                         </li>
                     @endauth
                 </ul>
+
             </div>
             <!--Side Nav-->
 
@@ -99,8 +103,15 @@
 
             <!-- Collect    the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse justify-content-center" id="navbar-menu">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="/">
+                            <img src="{{ url('/images/logo1.png') }}" style="width:200px;">
+                        </a>
+                    </li>
 
-                <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
+                </ul>
+                <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
 
                     <li class="nav-item active"><a class="nav-link" href="/">The Adrenaline Nomad</a></li>
                     <li class="nav-item"><a class="nav-link" href="blog">Blogs</a></li>
@@ -172,6 +183,9 @@
             <script src="{{ asset('js/contact-form-script.js') }}" defer></script>
             <script src="{{ asset('js/custom.js') }}" defer></script>
             <script src="{{ asset('js/popper.min.js') }}" defer></script>
+            <script src="{{ asset('js/loader.js') }}"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 
             <script>
                 function openNav() {

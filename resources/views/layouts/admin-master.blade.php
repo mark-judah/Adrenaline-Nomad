@@ -24,6 +24,7 @@
     <link href="{{ asset('css/custom.css') }}" defer rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="{{ asset('css/bootstrap.min.css') }}" defer rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/loader.css') }}" defer rel="stylesheet" type="text/css">
 
     <!-- Responsive CSS -->
     <link href="{{ asset('css/responsive.css') }}" defer rel="stylesheet" type="text/css">
@@ -32,10 +33,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{ asset('js/loader.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 
 </head>
 
 <body>
+    <div id="preloader"></div>
 
     <div>
         <div class="page-wrapper chiller-theme">
@@ -185,7 +189,7 @@
                             </li>
                             @endif
                             <li>
-                                <a href="">
+                                <a href="{{ url('messages') }}">
                                     <i class="material-icons">message</i><span>Messages</span>
                                     <span class="badge badge-pill badge-danger">3</span>
                                 </a>

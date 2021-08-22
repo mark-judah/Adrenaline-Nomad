@@ -15,7 +15,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $messages = Message::orderBy('created_at', 'desc')->paginate(20);
+        return view('layouts.messages', ['messages' => $messages]);    
     }
 
     /**
@@ -36,12 +37,13 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $input['name'] = $request->input('name');
-        $input['email'] = $request->input('email');
-        $input['subject'] = $request->input('subject');
-        $input['message'] = $request->input('message');
-  
-        Message::create( $input );
+        
+        $message = new Message();
+        $message->name=$request->input('name');
+        $message->email=$request->input('email');
+        $message->subject=$request->input('subject');
+        $message->message=$request->input('message');
+        $message->save();
         return redirect('/contact')->with('message', 'Message sent succesfuly. You will be contacted shortly');
     }
 

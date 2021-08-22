@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserListController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\AboutContentController;
+
 
 use Illuminate\Support\Facades\Auth;
 /*
@@ -24,18 +26,30 @@ Route::get('/', function () {
 });
 Route::get('/', 'PostController@fetch_blogs');
 Route::view('/login', 'auth.login');
-Route::view('/contact', 'layouts.contact');
-Route::view('/about', 'layouts.about');
 Route::view('/register', 'auth.register');
 Route::view('/edit-content', 'layouts.edit_content');
 
+
+Route::get('about', 'AboutContentController@index');
 Route::get('blog', 'PostController@index');
 Route::get('admin', [AdminController::class, 'index']);
 Route::get('users', [UserListController::class, 'index']);
 Route::get('edit_user/{id}', [UserListController::class, 'edit']);
 Route::get('delete_user/{id}', [UserListController::class, 'destroy']);
+Route::get('about', 'AboutContentController@index');
+Route::get('contact', 'AboutContentController@contact_page');
+
 Route::post('update_user', 'UserListController@update');
+Route::get('messages', 'MessageController@index');
 Route::post('new-message', 'MessageController@store');
+Route::post('update_about_content', 'AboutContentController@update');
+Route::post('update_blog_banner', 'PostController@update_banner');
+Route::post('update_slug_banner', 'PostController@update_slug_banner');
+Route::post('update_about_banner', 'AboutContentController@update_about_banner');
+Route::post('update_contact_banner', 'AboutContentController@update_contact_banner');
+
+
+
 
 //logout
 Route::get('logout', function(){

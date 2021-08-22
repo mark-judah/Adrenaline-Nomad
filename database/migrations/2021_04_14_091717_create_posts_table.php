@@ -25,6 +25,8 @@ class CreatePostsTable extends Migration
         $table->boolean('active');
         $table->timestamps();
         $table->string('blog_thumbnail')->nullable();
+        $table->string('slug_banner')->nullable();
+
 
       });
       DB::statement("ALTER TABLE posts ADD body LONGBLOB");

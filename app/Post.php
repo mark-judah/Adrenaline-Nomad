@@ -12,6 +12,8 @@ class Post extends Model
     'title',
     'body',
     'blog_thumbnail',
+    'blog_banner',
+
   ];
   // posts has many comments
   // returns all comments on that post
