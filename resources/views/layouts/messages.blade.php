@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    @extends('layouts.admin-master')
+    @extends('layouts.admin.admin_master')
 
     @section('title', 'Page Title')
 
@@ -90,7 +90,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="container col-md-12 text-center">
-                            <form action="{{ url('/update_about_content') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ url('/') }}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="form-group col-md-12 col-md-offset-5 ">
                                     <div class="form-group">

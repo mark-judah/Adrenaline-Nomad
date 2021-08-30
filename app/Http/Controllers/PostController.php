@@ -29,11 +29,12 @@ class PostController extends Controller
   {
     $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(6);
     $content = DB::table('about_contents')->where('id','1' )->get();
+    $slider = DB::table('slider_contents')->where('id','1' )->get();
 
     //$posts= DB::table('posts')->where('active','1' )->get();
     $title = 'Latest Posts';
     //return view('layouts.home')->withPost($posts)->withTitle($title);
-    return view('layouts.home', ['posts' => $posts,'content'=>$content]);
+    return view('layouts.home', ['posts' => $posts,'content'=>$content,'slider'=>$slider]);
   }
   //display in blog page
   public function index()
@@ -41,7 +42,7 @@ class PostController extends Controller
     $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(7);
     $about_content = DB::table('about_contents')->where('id','1' )->get();
     
-    return view('posts.blog', ['posts' => $posts,'about_content'=>$about_content]);
+    return view('layouts.posts.blogs', ['posts' => $posts,'about_content'=>$about_content]);
 
   }
 
@@ -55,7 +56,7 @@ class PostController extends Controller
   {
     // 
     if ($request->user()->can_post()) {
-      return view('posts.create');
+      return view('layouts.posts.create');
     } else {
       return redirect('/admin')->withErrors('You have insufficient permisions')->withInput();
     }
@@ -117,7 +118,7 @@ class PostController extends Controller
       $message = 'Post published successfully';
     }
     $post->save();
-    // return redirect('/blog' . $post->slug)->withMessage($message);
+    // return redirect('/blogs' . $post->slug)->withMessage($message);
     return redirect('/');
   }
   /**
@@ -129,23 +130,17 @@ class PostController extends Controller
   public function show($slug)
   {
     $post = Post::where('slug', $slug)->first();
-    // $post= DB::table('posts')->where('slug',$slug)->first();
-    //dump($post);
-    $data =  array();
-    $data['posts'] = $post;
+    $comments = Comment::where('on_post', $post->id)->get();
+
 
     if ($post) {
       if ($post->active == false)
       return redirect('/')->withErrors('Requested page not found')->withInput();
-
-      $comments = $post->comments;
-      $data['comments'] = $comments;
     } else {
       return redirect('/')->withErrors('Requested page not found')->withInput();
     }
-    //return view('posts.show')->withPost($post)->withComments($comments);
-    // return view('posts.show',[ 'post' => $post]);
-    return view('posts.show', compact("data"));
+        return view('layouts.posts.show', ['posts' => $post,'comments'=>$comments]);
+
   }
 
   /**
@@ -158,7 +153,7 @@ class PostController extends Controller
   {
     $post = Post::where('slug', $slug)->first();
     if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
-      return view('posts.edit')->with('post', $post);
+      return view('layouts.posts.edit')->with('post', $post);
     else {
       return redirect('/admin')->withErrors('You have insufficient permisions')->withInput();
     }
@@ -262,7 +257,7 @@ class PostController extends Controller
         $aboutContent->save();
   
   
-        return redirect('/blog');
+        return redirect('/blogs');
       }
     }else{
       if ($files = $request->file('blog_banner')) {
@@ -277,10 +272,12 @@ class PostController extends Controller
         $aboutContent->save();
   
   
-        return redirect('/blog');
+        return redirect('/blogs');
       }
     }
     
 
   }
+
+ 
 }

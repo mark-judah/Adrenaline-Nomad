@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserListController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\AboutContentController;
+use App\Http\Controllers\SliderContentController;
 
 
 use Illuminate\Support\Facades\Auth;
@@ -31,13 +32,14 @@ Route::view('/edit-content', 'layouts.edit_content');
 
 
 Route::get('about', 'AboutContentController@index');
-Route::get('blog', 'PostController@index');
+Route::get('blogs', 'PostController@index');
 Route::get('admin', [AdminController::class, 'index']);
 Route::get('users', [UserListController::class, 'index']);
 Route::get('edit_user/{id}', [UserListController::class, 'edit']);
 Route::get('delete_user/{id}', [UserListController::class, 'destroy']);
 Route::get('about', 'AboutContentController@index');
 Route::get('contact', 'AboutContentController@contact_page');
+
 
 Route::post('update_user', 'UserListController@update');
 Route::get('messages', 'MessageController@index');
@@ -47,7 +49,9 @@ Route::post('update_blog_banner', 'PostController@update_banner');
 Route::post('update_slug_banner', 'PostController@update_slug_banner');
 Route::post('update_about_banner', 'AboutContentController@update_about_banner');
 Route::post('update_contact_banner', 'AboutContentController@update_contact_banner');
-
+// add comment
+Route::post('add_comment', 'CommentController@store');
+Route::post('update_home_slider', 'SliderContentController@update_slider');
 
 
 
@@ -76,8 +80,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('my-all-posts', 'UserController@user_posts_all');
     // display user's drafts
     Route::get('my-drafts', 'UserController@user_posts_draft');
-    // add comment
-    Route::post('comment/add', 'CommentController@store');
+    
     // delete comment
     Route::post('comment/delete/{id}', 'CommentController@distroy');
   });

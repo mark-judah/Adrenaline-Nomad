@@ -493,6 +493,8 @@ form
      padding-bottom: 30px;
      padding-left: 10px;
      padding-right: 30px;
+     font-family: "Roboto Condensed", sans-serif;
+
 }
  nav.navbar.bootsnav ul.nav li.active > a{
      color: #f4623a;
@@ -756,6 +758,7 @@ form
      
      font-size: 64px;
      color: #fff;
+     font-family: "Roboto Condensed", sans-serif;
 }
  .cover-slides p{
      font-size: 18px;
@@ -1423,7 +1426,24 @@ img {
      color: #f4623a;
 } 
 /*------------------------------------------------------------------ Side Nav -------------------------------------------------------------------*/
+.hero-image {
+position: relative;
+}
 
+.hero-image:after {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    display: block;
+    content: "";
+}
+.slider-button{
+    z-index: 2;
+    position:relative;
+}
 .sidenav {
     height: 100%;
     width: 0;
@@ -1445,12 +1465,14 @@ img {
     padding: 14px 10px;
     padding-right: 50px;
     text-decoration: none;
-    font-size: 12   px;
+    font-size: 15px;
     color: #ffffff;
     display: block;
     transition: 0.3s;
     border-bottom: 1px solid rgba(0, 0, 0, 0.07);
     text-transform: uppercase;
+    font-family: "Roboto Condensed", sans-serif;
+
 }
   
   .sidenav a:hover {

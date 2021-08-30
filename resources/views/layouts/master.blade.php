@@ -68,7 +68,7 @@
                 <ul>
                     <li class="nav-item active"><a class="nav-link" href="/">HOME</a></li>
 
-                    <li class="nav-item"><a class="nav-link" href="blog">BLOGS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/blogs">BLOGS</a></li>
 
 
                     <li class="nav-item"><a class="nav-link" href="/about">ABOUT</a></li>
@@ -104,17 +104,18 @@
             <!-- Collect    the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse justify-content-center" id="navbar-menu">
                 <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="/">
-                            <img src="{{ url('/images/logo1.png') }}" style="width:200px;">
-                        </a>
-                    </li>
+                            <a class="nav-link" href="/">The Adrenaline Nomad</a> </a>
+                    </li> --}}
 
                 </ul>
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
 
-                    <li class="nav-item active"><a class="nav-link" href="/">The Adrenaline Nomad</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog">Blogs</a></li>
+                    <li class="nav-item active"> <a href="/">
+                            <img src="{{ url('/images/logo1.png') }}" style="width:200px;">
+                        </a></li>
+                    <li class="nav-item"><a class="nav-link" href="/blogs   ">Blogs</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="/contact">Talk To Me</a></li>
                     @unless(Auth::check())

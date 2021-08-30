@@ -27,36 +27,69 @@
           <div id="slides-shop" class="cover-slides">
               <ul class="slides-container">
 
-                  <li class="text-center">
-                      <img class="img-responsive" src="{{ asset('images/banner1b.jpg') }}">
+                  <li class="text-center hero-image">
+                      @if ($slider)
+                          @foreach ($slider as $slide)
+                              <img class="img-responsive" src="{{ url('/sliders') }}/{{ $slide->slider_1 }}">
+                          @endforeach
+                      @else
+                          <img class="img-responsive" src="{{ asset('images/banner1b.jpg') }}">
+
+                      @endif
+                      @if (!Auth::guest() && Auth::user()->is_admin())
+                          <button data-toggle="modal" data-target="#bannerModal" class="btn btn-primary slider-button"
+                              style="float:right; margin:10px;"><small>Change Slider Image</small></button>
+                      @endif
                       <div class="container">
                           <div class="row">
                               <div class="col-md-12">
-                                  <h1 class="m-b-20"><strong>THE ADRENALINE NOMAD</strong></h1>
+                                  <h1 class="m-b-20">THE ADRENALINE NOMAD</h1>
                                   <h2><span style="color:white">TRAVEL | ADVENTURE | ADRENALINE | STORY
                                           TELLING</span></h2>
                               </div>
                           </div>
                       </div>
                   </li>
-                  <li class="text-center">
-                      <img src="{{ asset('images/banner1c.jpg') }}" class="img-responsive">
+                  <li class="text-center hero-image">
+                   @if ($slider)
+                          @foreach ($slider as $slide)
+                              <img class="img-responsive" src="{{ url('/sliders') }}/{{ $slide->slider_2 }}">
+                          @endforeach
+                      @else
+                          <img class="img-responsive" src="{{ asset('images/banner1c.jpg') }}">
+
+                      @endif
+                      @if (!Auth::guest() && Auth::user()->is_admin())
+                          <button data-toggle="modal" data-target="#bannerModal" class="btn btn-primary slider-button"
+                              style="float:right; margin:10px;"><small>Change Slider Image</small></button>
+                      @endif
                       <div class="container">
                           <div class="row">
                               <div class="col-md-12">
-                                  <h1 class="m-b-20"><strong>THE ADRENALINE NOMAD</strong></h1>
+                                  <h1 class="m-b-20">THE ADRENALINE NOMAD</h1>
                                   <h2><span style="color:white">TRAVEL | ADVENTURE | ADRENALINE | STORY
                                           TELLING</span></h2>
                               </div>
                           </div>
                       </div>
                   </li>
-                  <li class="text-center">
-                      <img src="{{ asset('images/banner1a.jpg') }}" class="img-responsive">
+                  <li class="text-center hero-image">
+                   @if ($slider)
+                          @foreach ($slider as $slide)
+                              <img class="img-responsive" src="{{ url('/sliders') }}/{{ $slide->slider_3 }}">
+                          @endforeach
+                      @else
+                          <img class="img-responsive" src="{{ asset('images/banner1a.jpg') }}">
+
+                      @endif
+                      @if (!Auth::guest() && Auth::user()->is_admin())
+                          <button data-toggle="modal" data-target="#bannerModal" class="btn btn-primary slider-button"
+                              style="float:right; margin:10px;"><small>Change Slider Image</small></button>
+                      @endif
                       <div class="container">
                           <div class="row">
                               <div class="col-md-12">
-                                  <h1 class="m-b-20"><strong>THE ADRENALINE NOMAD</strong></h1>
+                                  <h1 class="m-b-20">THE ADRENALINE NOMAD</h1>
                                   <h2><span style="color:white">TRAVEL | ADVENTURE | ADRENALINE | STORY
                                           TELLING</span></h2>
                               </div>
@@ -67,6 +100,67 @@
               </ul>
           </div>
           <br>
+          <!-- Modal -->
+          <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Change slider image(s)</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="container col-md-12 text-center">
+                              <form action="{{ url('update_home_slider') }}" method="post" enctype="multipart/form-data">
+                                  {{ csrf_field() }}
+                                  <div class="form-group col-md-12 col-md-offset-5 ">
+                                      <div class="form-group">
+                                          <label for="home_slider">Change Slider 1</label>
+                                          {{-- <input required type="file" class="form-control" name="images[]" id="gallery-photo-add" multiple> --}}
+
+                                          <input type="file" name="home_slider1" id="home_slider"
+                                              onchange="loadPreview(this);" class="form-control">
+                                          <div class="gallery">
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label for="home_slider">Choose Slider 2</label>
+                                          {{-- <input required type="file" class="form-control" name="images[]" id="gallery-photo-add" multiple> --}}
+
+                                          <input type="file" name="home_slider2" id="home_slider2"
+                                              onchange="loadPreview(this);" class="form-control">
+                                          <div class="gallery">
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label for="home_slider">Change Slider 3</label>
+                                          {{-- <input required type="file" class="form-control" name="images[]" id="gallery-photo-add" multiple> --}}
+
+                                          <input type="file" name="home_slider3" id="home_slider3"
+                                              onchange="loadPreview(this);" class="form-control">
+                                          <div class="gallery">
+                                          </div>
+                                      </div>
+                                  </div>
+
+
+                                  <div class="col-md-12 text-center">
+                                      <input type="submit" name='publish' class="btn btn-success" value="Done" />
+
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
           <br>
           <div class="col-xl-12 col-xs-12 col-centered">
               <div class="section_title text-center mb-55">
@@ -88,7 +182,7 @@
                       <p class="text-muted">My mission in life is not to merely survive but to thrive and to do so
                           with some passion, some compassion, some humor, and some style.
                           <br>
-                          <strong>~Maya Angelou</strong>
+                          ~Maya Angelou
                       </p>
 
 
@@ -160,7 +254,7 @@
       @section('footer')
 
       @stop
-      
+
   </body>
 
   </html>

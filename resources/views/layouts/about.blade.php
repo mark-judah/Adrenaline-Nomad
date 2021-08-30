@@ -8,7 +8,13 @@
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <script>
+        $(document).ready(function() {
+            $('.mce-notification-inner')
+                .hide(); //enter the class or id of the particular html element which you wish to hide. 
+        });
 
+    </script>
 </head>
 
 
@@ -73,7 +79,7 @@
                                 {{ csrf_field() }}
                                 <div class="form-group col-md-12 col-md-offset-5 ">
                                     <div class="form-group">
-                                        <label for="about_banner">Choose  Banner Image</label>
+                                        <label for="about_banner">Choose Banner Image</label>
                                         {{-- <input required type="file" class="form-control" name="images[]" id="gallery-photo-add" multiple> --}}
 
                                         <input type="file" name="about_banner" id="about_banner"
@@ -103,7 +109,7 @@
         <div class="col-lg-10 col-sm-12 mx-auto">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">About Me</li>
 
                 </ol>
@@ -140,10 +146,10 @@
                                                     <div class="form-group">
                                                         <textarea class="description" name="body">
 
-                                                                                                                        @foreach ($content as $about)
-                                                                                                                                            {{ $about->about_content }}
-                                                                                                                                        @endforeach  
-                                                                                                                    </textarea>
+                                                                                                                                @foreach ($content as $about)
+                                                                                                                                                    {{ $about->about_content }}
+                                                                                                                                                @endforeach  
+                                                                                                                            </textarea>
                                                         <script src="https://cloud.tinymce.com/stable/tinymce.min.js">
                                                         </script>
                                                         <script>
@@ -186,8 +192,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <a href="#"><img src="{{ asset('images/coverPhoto.png') }}" class="img-fluid">
-                    </a>
+                    <img src="{{ asset('images/coverPhoto.png') }}" class="img-fluid">
                     <br>
                     <br>
                 </div>
@@ -202,6 +207,7 @@
     @section('footer')
 
     @stop
+
 </body>
 
 </html>

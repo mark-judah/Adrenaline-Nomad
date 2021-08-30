@@ -16,17 +16,9 @@ class CreateCommentsTable extends Migration
          //id, on_blog, from_user, body, at_time
     Schema::create('comments', function (Blueprint $table) {
         $table->id();
-        $table->unsignedBigInteger('on_post');
         $table->string('name');
-        //$table->unsignedBigInteger('from_user');
-        $table->foreign('on_post')
-          ->references('id')->on('posts')
-          ->onDelete('cascade');
-        // $table->foreign('from_user')
-        //   ->references('id')->on('users')
-        //   ->onDelete('cascade');
+        $table->string('on_post');
         $table->text('body');
-
         $table->timestamps();
       });
     }

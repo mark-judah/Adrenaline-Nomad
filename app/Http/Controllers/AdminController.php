@@ -19,7 +19,7 @@ class AdminController extends Controller
         $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(20);
         //$posts= DB::table('posts')->where('active','1' )->get();
         $title = 'Latest Posts';
-        return view('layouts.admin_blog_list',[ 'posts' => $posts]);    }
+        return view('layouts.admin.admin_blog_list',[ 'posts' => $posts]);    }
 
     /**
      * Show the form for creating a new resource.
