@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Mail;
 
 class MessageController extends Controller
 {
@@ -90,5 +91,19 @@ class MessageController extends Controller
     public function destroy(Messages $messages)
     {
         //
+    }
+
+    public function contactPost(Request $request){
+        Mail::send('email', [
+                'name' => $request->get('sender_name'),
+                'email' => $request->get('sender_email'),
+                function ($message) {
+                        $message->from('markmaina333@gmail.com');
+                        $message->to($request->get('sender_email'), $request->get('sender_name'))
+                                ->subject($request->get('subject'));
+        });
+
+        return back()->with('success', 'Email Sent');
+
     }
 }

@@ -52,7 +52,7 @@ Route::post('update_contact_banner', 'AboutContentController@update_contact_bann
 // add comment
 Route::post('add_comment', 'CommentController@store');
 Route::post('update_home_slider', 'SliderContentController@update_slider');
-
+Route::post('email_response', 'MessageController@contactPost');
 
 
 //logout

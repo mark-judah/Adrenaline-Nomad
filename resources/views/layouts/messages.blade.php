@@ -73,50 +73,61 @@
                         </td>
 
                     </tr>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Reply</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container col-md-12 text-center">
+                                        <form action="{{ url('email_response') }}" method="post"
+                                            enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+
+                                            <div class="form-group col-md-12 col-md-offset-5 ">
+                                                <input type="hidden" name="sender_name"
+                                                    value="{{ $message->name }}" />
+                                                <input type="hidden" name="sender_email"
+                                                    value="{{ $message->email }}" />
+
+                                                <div class="form-group">
+                                                    <label for="subject">Subject</label>
+
+                                                    <input required="required" type="text" name="subject"
+                                                        class="form-control" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="message">Message</label>
+
+                                                    <input required="required" type="text" name="message"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-12 text-center">
+                                                    <input type="submit" name='send' class="btn btn-success" value="Send" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 @endforeach
 
             </tbody>
         </table>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container col-md-12 text-center">
-                            <form action="{{ url('/') }}" method="post" enctype="multipart/form-data">
-                                {{ csrf_field() }}
-                                <div class="form-group col-md-12 col-md-offset-5 ">
-                                    <div class="form-group">
-                                        <label for="subject">Subject</label>
-
-                                        <input required="required" type="text" name="subject" class="form-control" />
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="message">Message</label>
-
-                                        <input required="required" type="text" name="reply" class="form-control" />
-                                    </div>
-                                    <div class="col-md-12 text-center">
-                                        <input type="submit" name='send' class="btn btn-success" value="Send" />
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     @stop
 
     @section('footer')

@@ -120,7 +120,7 @@
                                           <label for="home_slider">Change Slider 1</label>
                                           {{-- <input required type="file" class="form-control" name="images[]" id="gallery-photo-add" multiple> --}}
 
-                                          <input type="file" name="home_slider1" id="home_slider"
+                                          <input type="file" name="home_slider1" id="home_slider1"
                                               onchange="loadPreview(this);" class="form-control">
                                           <div class="gallery">
                                           </div>
