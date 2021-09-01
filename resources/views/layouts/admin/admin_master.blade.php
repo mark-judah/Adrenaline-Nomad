@@ -201,7 +201,6 @@
                             <li>
                                 <a href="{{ url('messages') }}">
                                     <i class="material-icons">message</i><span>Messages</span>
-                                    <span class="badge badge-pill badge-danger">3</span>
                                 </a>
                             </li>
 

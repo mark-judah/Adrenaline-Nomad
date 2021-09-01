@@ -93,17 +93,33 @@ class MessageController extends Controller
         //
     }
 
+   
     public function contactPost(Request $request){
-        Mail::send('email', [
-                'name' => $request->get('sender_name'),
-                'email' => $request->get('sender_email'),
-                function ($message) {
-                        $message->from('markmaina333@gmail.com');
-                        $message->to($request->get('sender_email'), $request->get('sender_name'))
-                                ->subject($request->get('subject'));
+
+        $to_name =$request->get('sender_name');
+        $to_email = $request->get('sender_email');
+        $data = array('name'=>$to_name, 'body' => $request->get('message'));
+             
+        Mail::send('layouts.email', $data, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+                    ->subject("The Adrenaline Nomad");
+            $message->from('markjudah5@gmail.com','The Adrenaline Nomad');
+
         });
+        return redirect('/messages')->with('message', 'Message sent succesfuly. You will be contacted shortly');
 
-        return back()->with('success', 'Email Sent');
+}
+    // public function contactPost(Request $request){
+    //     Mail::send('email', [
+    //             'name' => $request->get('sender_name'),
+    //             'email' => $request->get('sender_email'),
+    //             function ($message) {
+    //                     $message->from('markmaina333@gmail.com');
+    //                     $message->to($request->get('sender_email'), $request->get('sender_name'))
+    //                             ->subject($request->get('subject'));
+    //     }]);
 
-    }
+    //     return back()->with('success', 'Email Sent');
+
+    // }
 }

@@ -33,7 +33,7 @@
                 @foreach ($content as $about)
                     @if (!empty($about->about_banner))
                         <div id="blog-banner-image"
-                            style="background-image: url({{ url('/banners') }}/{{ $about->about_banner }})">
+                            style="background-image: url({{ asset('/banners') }}/{{ $about->about_banner }})">
                             @if (!Auth::guest() && Auth::user()->is_admin())
                                 <button data-toggle="modal" data-target="#bannerModal" class="btn btn-primary"
                                     style="float:right; margin:10px;"><small>Change Banner Image</small></button>
