@@ -6,6 +6,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>The Adrenaline Nomad</title>
+     <link rel="shortcut icon" href="{{ asset('images/logo2.png') }}"  type='image/x-icon'>
 
 
   </head>
@@ -96,6 +97,75 @@
                           </div>
                       </div>
                   </li>
+                   <li class="text-center hero-image">
+                   @if ($slider)
+                          @foreach ($slider as $slide)
+                              <img class="img-responsive" src="{{ url('/sliders') }}/{{ $slide->slider_4 }}">
+                          @endforeach
+                      @else
+                          <img class="img-responsive" src="{{ asset('images/banner1a.jpg') }}">
+
+                      @endif
+                      @if (!Auth::guest() && Auth::user()->is_admin())
+                          <button data-toggle="modal" data-target="#bannerModal" class="btn btn-primary slider-button"
+                              style="float:right; margin:10px;"><small>Change Slider Image</small></button>
+                      @endif
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <h1 class="m-b-20">THE ADRENALINE NOMAD</h1>
+                                  <h2><span style="color:white">TRAVEL | ADVENTURE | ADRENALINE | STORY
+                                          TELLING</span></h2>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                   <li class="text-center hero-image">
+                   @if ($slider)
+                          @foreach ($slider as $slide)
+                              <img class="img-responsive" src="{{ url('/sliders') }}/{{ $slide->slider_5 }}">
+                          @endforeach
+                      @else
+                          <img class="img-responsive" src="{{ asset('images/banner1a.jpg') }}">
+
+                      @endif
+                      @if (!Auth::guest() && Auth::user()->is_admin())
+                          <button data-toggle="modal" data-target="#bannerModal" class="btn btn-primary slider-button"
+                              style="float:right; margin:10px;"><small>Change Slider Image</small></button>
+                      @endif
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <h1 class="m-b-20">THE ADRENALINE NOMAD</h1>
+                                  <h2><span style="color:white">TRAVEL | ADVENTURE | ADRENALINE | STORY
+                                          TELLING</span></h2>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                   <li class="text-center hero-image">
+                   @if ($slider)
+                          @foreach ($slider as $slide)
+                              <img class="img-responsive" src="{{ url('/sliders') }}/{{ $slide->slider_6 }}">
+                          @endforeach
+                      @else
+                          <img class="img-responsive" src="{{ asset('images/banner1a.jpg') }}">
+
+                      @endif
+                      @if (!Auth::guest() && Auth::user()->is_admin())
+                          <button data-toggle="modal" data-target="#bannerModal" class="btn btn-primary slider-button"
+                              style="float:right; margin:10px;"><small>Change Slider Image</small></button>
+                      @endif
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <h1 class="m-b-20">THE ADRENALINE NOMAD</h1>
+                                  <h2><span style="color:white">TRAVEL | ADVENTURE | ADRENALINE | STORY
+                                          TELLING</span></h2>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
 
               </ul>
           </div>
@@ -145,6 +215,36 @@
                                           <div class="gallery">
                                           </div>
                                       </div>
+
+                                      <div class="form-group">
+                                          <label for="home_slider">Change Slider 4</label>
+                                          {{-- <input required type="file" class="form-control" name="images[]" id="gallery-photo-add" multiple> --}}
+
+                                          <input type="file" name="home_slider4" id="home_slider4"
+                                              onchange="loadPreview(this);" class="form-control">
+                                          <div class="gallery">
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label for="home_slider">Change Slider 5</label>
+                                          {{-- <input required type="file" class="form-control" name="images[]" id="gallery-photo-add" multiple> --}}
+
+                                          <input type="file" name="home_slider5" id="home_slider5"
+                                              onchange="loadPreview(this);" class="form-control">
+                                          <div class="gallery">
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label for="home_slider">Change Slider 6</label>
+                                          {{-- <input required type="file" class="form-control" name="images[]" id="gallery-photo-add" multiple> --}}
+
+                                          <input type="file" name="home_slider6" id="home_slider6"
+                                              onchange="loadPreview(this);" class="form-control">
+                                          <div class="gallery">
+                                          </div>
+                                      </div>
                                   </div>
 
 
@@ -179,7 +279,7 @@
 
                       @endforeach
 
-                      <p class="text-muted">My mission in life is not to merely survive but to thrive and to do so
+                      <p  class="text-muted">My mission in life is not to merely survive but to thrive and to do so
                           with some passion, some compassion, some humor, and some style.
                           <br>
                           ~Maya Angelou

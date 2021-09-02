@@ -10,6 +10,8 @@
     <link href="{{ asset('css/responsive.css') }}" defer rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
     <link href="{{ asset('css/custom.css') }}" defer rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <link href="{{ asset('css/bootstrap.min.css') }}" defer rel="stylesheet" type="text/css">
@@ -24,6 +26,7 @@
         <div id="loadOverlay"
             style="background-color:rgb(243, 217, 165); position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
         </div>
+
     </head>
 
 </head>
@@ -104,17 +107,29 @@
             <!-- Collect    the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse justify-content-center" id="navbar-menu">
                 <ul class="nav navbar-nav mr-auto">
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a href="/">
-                            <a class="nav-link" href="/">The Adrenaline Nomad</a> </a>
-                    </li> --}}
+                            <a class="nav-link" href="https://www.instagram.com/shiri_mark/?hl=en"><i
+                                    class="bi bi-instagram"></i>
+                            </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/">
+                            <a class="nav-link" href="/"><i class="bi bi-youtube"></i>
+                                </i>
+                            </a> </a>
+                    </li>
 
                 </ul>
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
 
-                    <li class="nav-item active"> <a href="/">
-                            <img src="{{ url('/images/logo1.png') }}" style="width:200px;">
-                        </a></li>
+                    <li class="nav-item active">
+                        <a href="/">
+                            <img src="{{ url('/images/logo2.png') }}" style="height: 80px; width: auto;">
+                        </a>
+                    </li>
+
                     <li class="nav-item"><a class="nav-link" href="/blogs   ">Blogs</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="/contact">Talk To Me</a></li>

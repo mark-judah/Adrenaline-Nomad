@@ -17,7 +17,9 @@ class SliderContentController extends Controller
           $file1 = $request->file('home_slider1');
           $file2 = $request->file('home_slider2');
           $file3 = $request->file('home_slider3');
-  
+          $file4 = $request->file('home_slider4');
+          $file5 = $request->file('home_slider5');
+          $file6 = $request->file('home_slider6');
             // Define upload path
             $destinationPath = public_path('/sliders/'); // upload path
             // Upload Orginal Image        
@@ -40,6 +42,27 @@ class SliderContentController extends Controller
               $file3->move($destinationPath, $slider_3);
               $insert['image'] = "$slider_3";
               $sliderContent->slider_3 = "$slider_3";
+
+            }   
+            if($file4){
+              $slider_4 = Str::random(9) . "." . $file4->getClientOriginalExtension();
+              $file4->move($destinationPath, $slider_4);
+              $insert['image'] = "$slider_4";
+              $sliderContent->slider_4 = "$slider_4";
+
+            }   
+            if($file5){
+              $slider_5 = Str::random(9) . "." . $file5->getClientOriginalExtension();
+              $file5->move($destinationPath, $slider_5);
+              $insert['image'] = "$slider_5";
+              $sliderContent->slider_5 = "$slider_5";
+
+            }   
+            if($file6){
+              $slider_6 = Str::random(9) . "." . $file6->getClientOriginalExtension();
+              $file6->move($destinationPath, $slider_6);
+              $insert['image'] = "$slider_6";
+              $sliderContent->slider_6 = "$slider_6";
 
             }   
             $sliderContent->save();
@@ -51,7 +74,9 @@ class SliderContentController extends Controller
           $file1 = $request->file('home_slider1');
           $file2 = $request->file('home_slider2');
           $file3 = $request->file('home_slider3');
-  
+          $file4 = $request->file('home_slider4');
+          $file5 = $request->file('home_slider5');
+          $file6 = $request->file('home_slider6');
             // Define upload path
             $destinationPath = public_path('/sliders/'); // upload path
             // Upload Orginal Image        
@@ -76,6 +101,27 @@ class SliderContentController extends Controller
               $sliderContent->slider_3 = "$slider_3";
 
             }   
+            if($file4){
+              $slider_4 = Str::random(9) . "." . $file4->getClientOriginalExtension();
+              $file4->move($destinationPath, $slider_4);
+              $insert['image'] = "$slider_4";
+              $sliderContent->slider_4 = "$slider_4";
+
+            }   
+            if($file5){
+              $slider_5 = Str::random(9) . "." . $file5->getClientOriginalExtension();
+              $file5->move($destinationPath, $slider_5);
+              $insert['image'] = "$slider_5";
+              $sliderContent->slider_5 = "$slider_5";
+
+            }   
+            if($file6){
+              $slider_6 = Str::random(9) . "." . $file6->getClientOriginalExtension();
+              $file6->move($destinationPath, $slider_6);
+              $insert['image'] = "$slider_6";
+              $sliderContent->slider_6 = "$slider_6";
+
+            } 
             $sliderContent->save();
       
       

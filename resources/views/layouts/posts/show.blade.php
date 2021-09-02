@@ -33,7 +33,7 @@
                 <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
                     style="float:right; margin:10px;"><small>Change Banner Image</small></button>
             @endif
-            <div class="container" style="padding:150px">
+            <div class="container" style="padding:225px">
                 <h3 style=" width: 100%; text-align: center; color:#ffffff;">
                     {{ $posts->title }}</h3>
                 <hr class="divider my-2" />

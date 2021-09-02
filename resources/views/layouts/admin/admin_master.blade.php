@@ -13,6 +13,7 @@
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="{{ asset('css/admin.css') }}" defer rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" defer rel="stylesheet" type="text/css">
@@ -52,7 +53,7 @@
                 <div class="navbar-header">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" onclick="openNav()"
                         aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="material-icons">dehaze</i>
+                        <i class="bi bi-list"></i>
                     </button>
 
                 </div>
@@ -99,15 +100,27 @@
                 <!-- Collect    the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse justify-content-center" id="navbar-menu">
                     <ul class="nav navbar-nav mr-auto">
-                        {{-- <li class="nav-item">
-                        <a href="/">
-                            <a class="nav-link" href="/">The Adrenaline Nomad</a> </a>
-                    </li> --}}
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="show-sidebar" href="#"><i class="bi bi-list"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.instagram.com/shiri_mark/?hl=en"><i
+                                    class="bi bi-instagram"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/"><i class="bi bi-youtube"></i>
+                                </i>
+                            </a>
+                        </li>
 
                     </ul>
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item"><a class="nav-link" id="show-sidebar" href="#"><i
-                                    class="fas fa-bars"></i></a></li>
+
                         <li class="nav-item active"> <a href="/">
                                 <img src="{{ url('/images/logo1.png') }}" style="width:200px;">
                             </a></li>
@@ -151,7 +164,7 @@
                     <div class="sidebar-brand">
                         <a href="#">Admin Panel</a>
                         <div id="close-sidebar">
-                            <i class="fas fa-times"></i>
+                            <i class="bi bi-x-square"></i>
                         </div>
                     </div>
                     <div class="sidebar-header">
@@ -172,7 +185,7 @@
                                 <span class="user-role">Author</span>
                             @endif
                             <span class="user-status">
-                                <i class="fa fa-circle"></i>
+                                <i class="bi bi-circle-fill"></i>
                                 <span>Online</span>
                             </span>
                         </div>
@@ -183,28 +196,33 @@
                         <ul>
                             <li>
                                 <a href="admin">
-                                    <i class="material-icons">home</i><span>Home</span>
+                                    <i class="bi bi-house-door"></i>
+                                    <span>Home</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="/new-post">
-                                    <i class="material-icons">add</i><span>New Blog</span>
+                                    <i class="bi bi-plus"></i>
+                                    <span>New Blog</span>
                                 </a>
                             </li>
                             @if (!Auth::guest() && Auth::user()->is_admin())
                                 <li>
                                     <a href="/users">
-                                        <i class="material-icons">people</i><span>Users</span>
+                                        <i class="bi bi-people"></i>
+                                        <span>Users</span>
                                     </a>
                                 </li>
                             @endif
                             <li>
                                 <a href="{{ url('messages') }}">
-                                    <i class="material-icons">message</i><span>Messages</span>
+                                    <i class="bi bi-chat"></i>
+                                    <span>Messages</span>
                                 </a>
                             </li>
 
-                            <li><a href="{{ url('logout') }}"><i class="material-icons">exit_to_app</i>Logout</a>
+                            <li><a href="{{ url('logout') }}"><i class="bi bi-box-arrow-left"></i>
+                                    Logout</a>
                             </li>
                         </ul>
 

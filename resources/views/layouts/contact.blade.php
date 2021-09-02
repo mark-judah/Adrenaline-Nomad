@@ -28,7 +28,7 @@
                                 style="float:right; margin:10px;"><small>Change Banner Image</small></button>
                         @endif
 
-                        <div class="container" style="padding:150px">
+                        <div class="container" style="padding:225px">
                             <h3 style="text-align: center; color:#ffffff;">Talk To Me</h3>
                             <hr class="divider my-2" />
                         </div>
@@ -98,7 +98,7 @@
     <div class="col-lg-8 col-sm-12 mx-auto">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Talk To Me</li>
             </ol>
         </nav>

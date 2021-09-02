@@ -14,7 +14,7 @@
 
 
  <body>
-     @extends('layouts.master')
+    @extends('layouts.admin.admin_master')
 
      @section('content')
          <div class="col-xl-12">

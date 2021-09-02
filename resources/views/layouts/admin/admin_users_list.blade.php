@@ -23,14 +23,15 @@
     @stop
     @section('content')
         <div class="container">
- <div class="col-xl-12">
-            <div class="section_title text-center ">
-                <br>
-                <h3><b>Users</b> </h3>
+            <div class="col-xl-12">
+                <div class="section_title text-center ">
+                    <br>
+                    <h3><b>Users</b> </h3>
 
+                </div>
             </div>
-        </div>
-        <br>            <table class="table table-striped table-bordered">
+            <br>
+            <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -51,8 +52,12 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->role }}</td>
                             <td>{{ $user->created_at }}</td>
-                            <td><a href="{{ url('edit_user/'. $user->id) }}" class="btn btn-primary"><i class="material-icons">edit</i></a></td>
-                            <td><a href="{{ url('delete_user/'. $user->id) }}" class="btn btn-danger"><i class="material-icons">delete</i></a></td>
+                            <td><a href="{{ url('edit_user/' . $user->id) }}" class="btn btn-primary"><i
+                                        class="bi bi-pencil-square"></i>
+                                </a></td>
+                            <td><a href="{{ url('delete_user/' . $user->id) }}" class="btn btn-danger"><i
+                                        class="bi bi-trash"></i>
+                                </a></td>
 
                         </tr>
                     @endforeach

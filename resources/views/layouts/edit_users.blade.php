@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    @extends('layouts.master')
+    @extends('layouts.admin.admin_master')
 
 
     @section('content')

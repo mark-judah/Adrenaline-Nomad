@@ -64,11 +64,11 @@
                         <td>{{ $message->message }}</td>
                         <td>{{ $message->created_at }}</td>
                         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                <i class="material-icons">reply</i>
+                                <i class="bi bi-reply"></i>
                             </button>
                         </td>
                         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                <i class="material-icons">done</i>
+                               <i class="bi bi-check-all"></i>
                             </button>
                         </td>
 

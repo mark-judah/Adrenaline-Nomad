@@ -34,7 +34,7 @@
                                     style="float:right; margin:10px;"><small>Change Banner Image</small></button>
                             @endif
 
-                            <div class="container" style="padding:150px">
+                            <div class="container" style="padding:225px">
                                 <h3 style="text-align: center; color:#ffffff;">Blog Posts</h3>
                                 <hr class="divider my-2" />
                             </div>
@@ -56,30 +56,7 @@
                     @endif
                 </div>
             @endif
-            {{-- @if (!$about_content->count())
-                <div class="blog-banner-placeholder">
-                    @if (!Auth::guest() && Auth::user()->is_admin())
-                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
-                            style="float:right; margin:10px;"><small>Change Banner Image</small></button>
-                    @endif
-                </div>
-            @else
-                @foreach ($about_content as $about)
-                    <div id="blog-banner-image"
-                        style="background-image: url({{ url('/banners') }}/{{ $about->blog_banner }})">
-                        @if (!Auth::guest() && Auth::user()->is_admin())
-                            <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
-                                style="float:right; margin:10px;"><small>Change Banner Image</small></button>
-                        @endif
-                        <div class="container" style="padding:150px">
-                            <h3 style="text-align: center; color:#ffffff;">Blog Posts</h3>
-                            <hr class="divider my-2" />
-
-                        </div>
-                    </div>
-
-                @endforeach
-            @endif --}}
+          
         @endisset
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -130,7 +107,7 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Blog</li>
                 </ol>
             </nav>

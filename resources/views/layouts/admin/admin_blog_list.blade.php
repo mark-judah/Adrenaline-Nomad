@@ -32,7 +32,7 @@
     @endsection
 
     @section('content')
-     <div class="col-xl-12">
+        <div class="col-xl-12">
             <div class="section_title text-center ">
                 <br>
                 <h3><b>Blogs</b> </h3>
@@ -60,8 +60,12 @@
                         <td>{{ $post->author->name }}</td>
                         <td>{{ $post->created_at }}</td>
                         <td>{{ $post->updated_at }}</td>
-                        <td><a href="{{ url('edit/'. $post->slug) }}" class="btn btn-primary"><i class="material-icons">edit</i></a></td>
-                        <td><a href="{{ url('delete/'. $post->id) }}" class="btn btn-danger"><i class="material-icons">delete</i></a></td>
+                        <td><a href="{{ url('edit/' . $post->slug) }}" class="btn btn-primary"><i
+                                    class="bi bi-pencil-square"></i>
+                            </a></td>
+                        <td><a href="{{ url('delete/' . $post->id) }}" class="btn btn-danger"><i
+                                    class="bi bi-pencil-square"></i>
+                            </a></td>
 
                     </tr>
                 @endforeach

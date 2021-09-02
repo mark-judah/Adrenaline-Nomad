@@ -39,7 +39,7 @@
                                     style="float:right; margin:10px;"><small>Change Banner Image</small></button>
                             @endif
 
-                            <div class="container" style="padding:150px">
+                            <div class="container" style="padding:225px">
                                 <h3 style="text-align: center; color:#ffffff;">About Me</h3>
                                 <hr class="divider my-2" />
                             </div>
