@@ -8,6 +8,8 @@
     <meta name="description"
         content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
     <title>Admin Panel</title>
+    <link href="https://unpkg.com/tailwindcss@2.2.0/dist/tailwind.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -32,6 +34,7 @@
     <!-- Custom CSS -->
     <link href="{{ asset('css/custom.css') }}" defer rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('js/loader.js') }}"></script>
@@ -219,6 +222,30 @@
                                     <i class="bi bi-chat"></i>
                                     <span>Messages</span>
                                 </a>
+                            </li>
+
+                            <li class="sidebar-dropdown">
+                                <a href="#">
+                                    <i class="bi bi-bar-chart"></i>
+                                    <span>Analytics</span>
+                                </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="{{ url('analytics') }}">All Visits
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ url('stats') }}">Stats
+                                        </a>
+                                    </li>
+
+
+
+                                </ul>
+                            </div>
+
                             </li>
 
                             <li><a href="{{ url('logout') }}"><i class="bi bi-box-arrow-left"></i>

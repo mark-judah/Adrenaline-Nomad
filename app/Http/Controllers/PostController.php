@@ -41,7 +41,7 @@ class PostController extends Controller
   {
     $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(7);
     $about_content = DB::table('about_contents')->where('id','1' )->get();
-    
+
     return view('layouts.posts.blogs', ['posts' => $posts,'about_content'=>$about_content]);
 
   }
@@ -54,7 +54,7 @@ class PostController extends Controller
    */
   public function create(Request $request)
   {
-    // 
+    //
     if ($request->user()->can_post()) {
       return view('layouts.posts.create');
     } else {
@@ -77,7 +77,7 @@ class PostController extends Controller
     if ($files = $request->file('blog_thumbnail')) {
       // Define upload path
       $destinationPath = public_path('/post_thumbnails/'); // upload path
-      // Upload Orginal Image           
+      // Upload Orginal Image
       $postThumbnail = date('YmdHis') . "." . $files->getClientOriginalExtension();
       $files->move($destinationPath, $postThumbnail);
       $insert['image'] = "$postThumbnail";
@@ -87,7 +87,7 @@ class PostController extends Controller
     if ($files1 = $request->file('blog_banner')) {
       // Define upload path
       $destinationPath1 = public_path('/banners/'); // upload path
-      // Upload Orginal Image           
+      // Upload Orginal Image
       $postBanner = date('YmdHis') . "." . $files1->getClientOriginalExtension();
       $files1->move($destinationPath1, $postBanner);
       $insert['image'] = "$postBanner";
@@ -127,7 +127,7 @@ class PostController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function show($slug)
+  public function show($slug,Request $request)
   {
     $post = Post::where('slug', $slug)->first();
     $comments = Comment::where('on_post', $post->id)->get();
@@ -139,7 +139,30 @@ class PostController extends Controller
     } else {
       return redirect('/')->withErrors('Requested page not found')->withInput();
     }
-        return view('layouts.posts.show', ['posts' => $post,'comments'=>$comments]);
+       return view('layouts.posts.show', ['posts' => $post,'comments'=>$comments]);
+
+//      dd($request->visitor()->browser(),
+//          $request->visitor()->url(),
+//          $request->visitor()->device(),
+//          $request->visitor()->ip(),
+//          $request->visitor()->method(),
+//          $request->visitor()->request(),
+//          $request->visitor()->referer(),
+//          $request->visitor()->languages(),
+//          $request->visitor()->useragent(),
+//          $request->visitor()->platform(),
+//          $request->visitor()->useragent(),
+//          $request->visitor()->url(),
+//          $request->visitor()->url(),
+//          $request->visitor()->url(),
+//          $request->visitor()->url(),
+//          $request->visitor()->url(),
+//          $request->visitor()->url(),
+//          $request->visitor()->url()
+//      );
+
+
+
 
   }
 
@@ -228,7 +251,7 @@ class PostController extends Controller
     if ($files = $request->file('slug_banner')) {
       // Define upload path
       $destinationPath = public_path('/banners/'); // upload path
-      // Upload Orginal Image           
+      // Upload Orginal Image
       $slugBanner = date('YmdHis') . "." . $files->getClientOriginalExtension();
       $files->move($destinationPath, $slugBanner);
       $insert['image'] = "$slugBanner";
@@ -248,36 +271,36 @@ class PostController extends Controller
       if ($files = $request->file('blog_banner')) {
         // Define upload path
         $destinationPath = public_path('/banners/'); // upload path
-        // Upload Orginal Image           
+        // Upload Orginal Image
         $postBanner = date('YmdHis') . "." . $files->getClientOriginalExtension();
         $files->move($destinationPath, $postBanner);
         $insert['image'] = "$postBanner";
-  
+
         $aboutContent->blog_banner = "$postBanner";
         $aboutContent->save();
-  
-  
+
+
         return redirect('/blogs');
       }
     }else{
       if ($files = $request->file('blog_banner')) {
         // Define upload path
         $destinationPath = public_path('/banners/'); // upload path
-        // Upload Orginal Image           
+        // Upload Orginal Image
         $postBanner = date('YmdHis') . "." . $files->getClientOriginalExtension();
         $files->move($destinationPath, $postBanner);
         $insert['image'] = "$postBanner";
-  
+
         $aboutContent->blog_banner = "$postBanner";
         $aboutContent->save();
-  
-  
+
+
         return redirect('/blogs');
       }
     }
-    
+
 
   }
 
- 
+
 }

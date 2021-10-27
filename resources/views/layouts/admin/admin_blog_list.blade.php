@@ -8,6 +8,7 @@
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blogs</title>
 
     <!-- Site Metas -->
     <title>Blogs</title>
@@ -23,60 +24,66 @@
 </head>
 
 <body>
-    @extends('layouts.admin.admin_master')
+@extends('layouts.admin.admin_master')
 
-    @section('title', 'Page Title')
+@section('title', 'Page Title')
 
-    @section('navbar')
-        @parent
-    @endsection
+@section('navbar')
+    @parent
+@endsection
 
-    @section('content')
-        <div class="col-xl-12">
-            <div class="section_title text-center ">
-                <br>
-                <h3><b>Blogs</b> </h3>
+@section('content')
 
+    <br>
+
+    <section class="container mx-auto p-2 font-mono">
+        <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+            <div class="w-full overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                    <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                        <th class="px-4 py-3">#</th>
+                        <th class="px-4 py-3">Blog Title</th>
+                        <th class="px-4 py-3">Author</th>
+                        <th class="px-4 py-3">Date Posted</th>
+                        <th class="px-4 py-3">Last Updated</th>
+                        <th class="px-4 py-3">Edit</th>
+                        <th class="px-4 py-3">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-white">
+
+                    @foreach ($posts as $post)
+
+                        <tr class="text-gray-700">
+                            <th class="px-4 py-3 text-ms font-semibold border">{{ $loop->iteration }}</th>
+                            <td class="px-4 py-3 text-ms font-semibold border">{{ $post->title }}</td>
+                            <td class="px-4 py-3 text-ms font-semibold border">{{ $post->author->name }}</td>
+                            <td class="px-4 py-3 text-ms font-semibold border">{{ $post->created_at }}</td>
+                            <td class="px-4 py-3 text-ms font-semibold border">{{ $post->updated_at }}</td>
+                            <td class="px-4 py-3 text-ms font-semibold border"><a
+                                    href="{{ url('edit/' . $post->slug) }}" class="btn btn-primary"><i
+                                        class="bi bi-pencil-square"></i>
+                                </a></td>
+                            <td class="px-4 py-3 text-ms font-semibold border"><a
+                                    href="{{ url('delete/' . $post->id) }}" class="btn btn-danger"><i
+                                        class="bi bi-trash"></i>
+                                </a></td>
+
+                        </tr>
+
+                    </tbody>
+                    @endforeach
+
+                </table>
             </div>
         </div>
-        <br>
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Blog Title</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Date Posted</th>
-                    <th scope="col">Last Updated</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($posts as $post)
-                    <tr>
-                        <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $post->title }}</td>
-                        <td>{{ $post->author->name }}</td>
-                        <td>{{ $post->created_at }}</td>
-                        <td>{{ $post->updated_at }}</td>
-                        <td><a href="{{ url('edit/' . $post->slug) }}" class="btn btn-primary"><i
-                                    class="bi bi-pencil-square"></i>
-                            </a></td>
-                        <td><a href="{{ url('delete/' . $post->id) }}" class="btn btn-danger"><i
-                                    class="bi bi-pencil-square"></i>
-                            </a></td>
+    </section>
+@stop
 
-                    </tr>
-                @endforeach
+@section('footer')
 
-            </tbody>
-        </table>
-    @stop
-
-    @section('footer')
-
-    @stop
+@stop
 </body>
 
 </html>

@@ -17,13 +17,7 @@
 
 
     @section('content')
-        <div class="col-xl-12">
-            <div class="section_title text-center mb-55">
-                <br>
-                <h3><b>Write Blog</b> </h3>
 
-            </div>
-        </div>
         <div class="container col-md-12 text-center">
             <form action="/new-post" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
@@ -50,7 +44,7 @@
                         <div class="gallery">
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="blog_thumbnail">Blog Content</label>
                         <textarea class="description" name="body">{{ old('body') }}</textarea>
@@ -106,7 +100,7 @@
         imagesPreview(this, 'div.gallery');
     });
 });
-    
+
     </script> --}}
     @endsection
 </body>

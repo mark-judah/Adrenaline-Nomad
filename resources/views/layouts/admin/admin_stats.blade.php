@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistics</title>
+    <link href="{{asset('/css/component.min.css')}}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{{asset('/js/echart.min.js')}}"></script>
 
 </head>
 
@@ -17,13 +19,6 @@
 @endsection
 
 @section('content')
-    <div class="col-xl-12">
-        <div class="section_title text-center ">
-            <br>
-            <h3><b>Statistics</b> </h3>
-
-        </div>
-    </div>
     @livewire('stats')
 @stop
 
@@ -31,6 +26,7 @@
 
 @stop
 @livewireScripts
+
 
 </body>
 

@@ -13,66 +13,64 @@
 </head>
 
 <body>
-    @extends('layouts.admin.admin_master')
+@extends('layouts.admin.admin_master')
 
-    @section('title', 'Page Title')
+@section('title', 'Page Title')
 
 
-    @section('navbar')
-        @parent
-    @stop
-    @section('content')
-        <div class="container">
-            <div class="col-xl-12">
-                <div class="section_title text-center ">
-                    <br>
-                    <h3><b>Users</b> </h3>
+@section('navbar')
+    @parent
+@stop
+@section('content')
+    <div class="container">
 
-                </div>
-            </div>
-            <br>
-            <table class="table table-striped table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Date Created</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
+        <section class="container mx-auto p-2 font-mono">
+            <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                <div class="w-full overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                        <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
 
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($users as $user)
-                        <tr>
-                            <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->role }}</td>
-                            <td>{{ $user->created_at }}</td>
-                            <td><a href="{{ url('edit_user/' . $user->id) }}" class="btn btn-primary"><i
-                                        class="bi bi-pencil-square"></i>
-                                </a></td>
-                            <td><a href="{{ url('delete_user/' . $user->id) }}" class="btn btn-danger"><i
-                                        class="bi bi-trash"></i>
-                                </a></td>
+                            <th class="px-4 py-3">#</th>
+                            <th class="px-4 py-3">Name</th>
+                            <th class="px-4 py-3">Email</th>
+                            <th class="px-4 py-3">Role</th>
+                            <th class="px-4 py-3">Date Created</th>
+                            <th class="px-4 py-3">Edit</th>
+                            <th class="px-4 py-3">Delete</th>
 
                         </tr>
-                    @endforeach
+                        </thead>
+                        <tbody class="bg-white">
+                        @foreach ($users as $user)
+                            <tr>
+                                <th class="px-4 py-3 text-ms font-semibold border">{{ $loop->iteration }}</th>
+                                <td class="px-4 py-3 text-ms font-semibold border">{{ $user->name }}</td>
+                                <td class="px-4 py-3 text-ms font-semibold border">{{ $user->email }}</td>
+                                <td class="px-4 py-3 text-ms font-semibold border">{{ $user->role }}</td>
+                                <td class="px-4 py-3 text-ms font-semibold border">{{ $user->created_at }}</td>
+                                <td class="px-4 py-3 text-ms font-semibold border"><a href="{{ url('edit_user/' . $user->id) }}" class="btn btn-primary"><i
+                                            class="bi bi-pencil-square"></i>
+                                    </a></td>
+                                <td class="px-4 py-3 text-ms font-semibold border"><a href="{{ url('delete_user/' . $user->id) }}" class="btn btn-danger"><i
+                                            class="bi bi-trash"></i>
+                                    </a></td>
 
-                </tbody>
-            </table>
-        </div>
+                            </tr>
+                        @endforeach
 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
 
+@endsection
 
-    @endsection
+@section('footer')
 
-    @section('footer')
-
-    @stop
+@stop
 </body>
 
 </html>

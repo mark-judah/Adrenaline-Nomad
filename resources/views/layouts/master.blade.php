@@ -60,7 +60,7 @@
             <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" onclick="openNav()"
                     aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="material-icons">dehaze</i>
+                        <i class="bi bi-list"></i>
                 </button>
 
             </div>
@@ -112,8 +112,8 @@
                             <a class="nav-link" href="https://www.instagram.com/shiri_mark/?hl=en"><i
                                     class="bi bi-instagram"></i>
                             </a>
+                        </a>
                     </li>
-
                     <li class="nav-item">
                         <a href="/">
                             <a class="nav-link" href="/"><i class="bi bi-youtube"></i>
@@ -213,6 +213,9 @@
                 }
 
             </script>
+
+
+    </div>
     </body>
 
     </html>
