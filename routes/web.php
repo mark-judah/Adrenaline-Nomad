@@ -28,18 +28,10 @@ Route::view('/login', 'auth.login');
 Route::view('/register', 'auth.register');
 Route::get('about', 'AboutContentController@index');
 Route::get('blogs', 'PostController@index');
-Route::get('admin', [AdminController::class, 'index']);
-Route::get('users', [UserListController::class, 'index']);
-Route::get('edit_user/{id}', [UserListController::class, 'edit']);
-Route::get('delete_user/{id}', [UserListController::class, 'destroy']);
 Route::get('about', 'AboutContentController@index');
 Route::get('contact', 'AboutContentController@contact_page');
-Route::post('update_user', 'UserListController@update');
-Route::get('messages', 'MessageController@index');
 Route::post('new-message', 'MessageController@store');
 Route::post('add_comment', 'CommentController@store');
-Route::post('update_home_slider', 'SliderContentController@update_slider');
-Route::post('email_response', 'MessageController@contactPost');
 
 // check for logged in user
 Route::middleware(['auth'])->group(function () {
@@ -57,6 +49,15 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/edit-content', 'layouts.edit_content');
     Route::view('/analytics', 'layouts.admin.admin_analytics');
     Route::view('/stats', 'layouts.admin.admin_stats');
+    Route::get('admin', [AdminController::class, 'index']);
+    Route::post('update_home_slider', 'SliderContentController@update_slider');
+    Route::get('users', [UserListController::class, 'index']);
+    Route::get('edit_user/{id}', [UserListController::class, 'edit']);
+    Route::get('delete_user/{id}', [UserListController::class, 'destroy']);
+    Route::post('update_user', 'UserListController@update');
+    Route::post('email_response', 'MessageController@contactPost');
+    Route::get('messages', 'MessageController@index');
+
   });
 
 
